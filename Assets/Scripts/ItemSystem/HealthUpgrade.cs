@@ -28,6 +28,5 @@ public class HealthUpgrade : Pickup, IUpgrade
         _target = picker;
         AddEffect();
         inventory.upgrades.Add(this);
-        Debug.Log(inventory.upgrades[0].GetType().Name);
     }
 }
