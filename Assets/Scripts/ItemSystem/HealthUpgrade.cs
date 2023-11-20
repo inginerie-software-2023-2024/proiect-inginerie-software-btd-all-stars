@@ -8,7 +8,7 @@ public class HealthUpgrade : Pickup, IUpgrade
 {
     [SerializeField]
     private int _healthUp;
-    public GameObject _target;
+    public GameObject target;
 
     [SerializeField]
     private Sprite _sprite;
@@ -17,7 +17,7 @@ public class HealthUpgrade : Pickup, IUpgrade
     //Increases max health and fully heals player
     public void AddEffect()
     {
-        HealthManager manager = _target.GetComponent<HealthManager>();
+        HealthManager manager = target.GetComponent<HealthManager>();
         manager.maxHealth += _healthUp;
         manager.RestoreHealth(manager.maxHealth - manager.CurrentHealth);
     }
@@ -25,7 +25,7 @@ public class HealthUpgrade : Pickup, IUpgrade
     //Increases max health and fully heals player
     public override void OnPickup(GameObject picker)
     {
-        _target = picker;
+        target = picker;
         AddEffect();
         inventory.upgrades.Add(this);
     }
