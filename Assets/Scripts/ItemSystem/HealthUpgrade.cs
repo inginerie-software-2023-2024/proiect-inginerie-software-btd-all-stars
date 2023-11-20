@@ -10,6 +10,10 @@ public class HealthUpgrade : Pickup, IUpgrade
     private int _healthUp;
     public GameObject _target;
 
+    [SerializeField]
+    private Sprite _sprite;
+    public Sprite Sprite { get { return _sprite; } }
+
     //Increases max health and fully heals player
     public void AddEffect()
     {
