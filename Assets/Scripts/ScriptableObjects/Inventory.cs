@@ -9,6 +9,8 @@ public class Inventory : ScriptableObject
     public int coins;
     [Range(0,9)]
     public int potions;
+    
+    public List<IUpgrade> upgrades = new();
 #nullable enable
     public Weapon? leftWeapon, rightWeapon;
     //Limit the number of coins

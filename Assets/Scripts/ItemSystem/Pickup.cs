@@ -4,9 +4,13 @@ using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour
 {
-    public int price;
-    public Inventory inventory;
-    
+    [SerializeField]
+    private int _price;
+    [SerializeField]
+    private bool _reusable;
+    [SerializeField]
+    protected Inventory inventory;
+
     //Method to implement for any class extending pickup
     public abstract void OnPickup(GameObject picker);
 
@@ -14,11 +18,14 @@ public abstract class Pickup : MonoBehaviour
     //Non-shop items should have price = 0 and no price display
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (inventory.coins >= price)
+        if (inventory.coins >= _price)
         {
             OnPickup(other.gameObject);
-            Destroy(gameObject);
-            inventory.coins -= price;
+            inventory.coins -= _price;
+            if (!_reusable) {
+                Destroy(gameObject);
+            }
+            
         }
     }
 }

@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215032684984062392}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35.93, y: -0.36, z: -0.08203058}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3901079647048138318
 BoxCollider2D:
@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6861603945352cc4dafa3d9ac8b312a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0
+  _price: 0
+  _reusable: 0
   inventory: {fileID: 11400000, guid: 874e9bf9a9d6bb240849f139de12e37e, type: 2}
-  healthUp: 2
+  _healthUp: 2
+  _target: {fileID: 119883888808943817, guid: 798e7019b8bc69d43a294693de643c7d, type: 3}
