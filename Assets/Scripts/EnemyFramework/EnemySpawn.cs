@@ -7,12 +7,12 @@ public class EnemySpawn : MonoBehaviour
     public GenericEnemyController enemyPrefab;
     private GenericEnemyController enemy;
     
-    public void spawnEnemy()
+    public void SpawnEnemy()
     {
         enemy = Instantiate(enemyPrefab);
     }
 
-    public void despawnEnemy()
+    public void DespawnEnemy()
     {
         if (enemy != null)
         {

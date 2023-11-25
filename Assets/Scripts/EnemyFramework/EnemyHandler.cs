@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHandler : MonoBehaviour
 {
     private int enemies = 0;
-    public bool RoomCleared { get; private set; } = true;
+    public bool RoomCleared { get; set; }
 
     public Pickup rewardPrefab;
 
@@ -24,7 +22,6 @@ public class EnemyHandler : MonoBehaviour
     public void RegisterEnemy()
     {
         ++enemies;
-        RoomCleared = false;
     }
     //If there are no more enemies, room is cleared and walls are disabled
     public void UnregisterEnemy()
