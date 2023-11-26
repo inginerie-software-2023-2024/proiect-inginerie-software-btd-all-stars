@@ -1992,13 +1992,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SavePoint
       objectReference: {fileID: 0}
+    - target: {fileID: 3289810266867561773, guid: 09a30bc4bdca6724a8d871e1bcccda46, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4518116237826516552, guid: 09a30bc4bdca6724a8d871e1bcccda46, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.66
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4518116237826516552, guid: 09a30bc4bdca6724a8d871e1bcccda46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.29
+      value: 1.68
       objectReference: {fileID: 0}
     - target: {fileID: 4518116237826516552, guid: 09a30bc4bdca6724a8d871e1bcccda46, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4874,7 +4878,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
