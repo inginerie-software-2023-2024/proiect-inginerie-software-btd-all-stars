@@ -40,11 +40,9 @@ public class SaveManager : ScriptableObject
             
             if (rooms[i].RoomCleared)
             {
-                Debug.Log(rooms[i].name);
                 _state.clearedRooms.Add(i);
             }
         }
-        Debug.Log(_state.clearedRooms.Count);
 
         WriteToSaveFile();
 
