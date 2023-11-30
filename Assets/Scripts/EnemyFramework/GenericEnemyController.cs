@@ -23,6 +23,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     protected Animator enemyAnimator;
     protected Vector3 movementDirection;
     protected Vector3 attackingDirection;
+    protected Transform target;
     //Initialization
     protected void Start()
     {

@@ -7,7 +7,6 @@ public class DogController : GenericEnemyController
 {
     protected BoxCollider2D verticalCollider;
     protected BoxCollider2D horizontalCollider;
-    protected  Transform target;
 
     public float jumpSpeed;
     public float jumpRadius;
@@ -28,7 +27,7 @@ public class DogController : GenericEnemyController
         StartCoroutine(AttackRoutine());
     }
 
-    //target should be within jumpRadois
+    //target should be within jumpRadius
     protected override bool ConditionIsSatisfied()
     {
         return currentState == EnemyState.moving && 
@@ -40,19 +39,14 @@ public class DogController : GenericEnemyController
     {
         if (currentState == EnemyState.idle || currentState == EnemyState.moving)
         {
-            movementDirection = (target.transform.position
-                                 - transform.position);
-
+            movementDirection = (target.transform.position - transform.position);
 
             if (movementDirection.magnitude > alertRadius)
                 return;
-            
+          
             movementDirection = movementDirection.normalized;
-
             currentState = EnemyState.moving;
-            
-            enemyRigidbody.MovePosition(
-                    transform.position + speed * Time.deltaTime * movementDirection);
+            enemyRigidbody.MovePosition(transform.position + speed * Time.deltaTime * movementDirection);
 
             //Dog sprite is not symmetrical so we need two different Hitboxes
             if (MovementIsHorizontal(movementDirection))
@@ -79,8 +73,7 @@ public class DogController : GenericEnemyController
     //After the attack it's staggered for 1-2 seconds 
     protected IEnumerator AttackRoutine()
     {
-        attackingDirection = (target.transform.position
-                         - transform.position).normalized;
+        attackingDirection = (target.transform.position - transform.position).normalized;
         yield return new WaitForSeconds(0.5f);
         enemyRigidbody.AddForce(
                     GetComponent<Rigidbody2D>().mass * jumpSpeed * attackingDirection, 
