@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5833475874270186822}
   - component: {fileID: -1275913245556843046}
   - component: {fileID: -446659155362468670}
+  - component: {fileID: 8101152399463475382}
   m_Layer: 9
   m_Name: Boschetar
   m_TagString: Untagged
@@ -32,8 +33,8 @@ Transform:
   m_GameObject: {fileID: 1084377683824911544}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: -2.65, y: 0.68, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1126933280, guid: 57d5702b0a7cdc94aa2dcff97d61b0b8, type: 3}
+  m_Sprite: {fileID: -411669907, guid: a461d7b06e0ac1944bf59339bb842db6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +109,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 4000530902669160807, guid: 59a499009471b504db0c7aeae78249c7, type: 3}
   _movementDirection: {x: 0, y: 0}
   _cooldownDuration: 2
-  _fearRadius: 4
+  _fearRadius: 2
   _launchOffSet: {fileID: 1769854766547870898}
 --- !u!61 &1146422323937727436
 BoxCollider2D:
@@ -142,18 +143,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13839102, y: 0.10396767}
+  m_Offset: {x: -0.06146598, y: 0.043078363}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 0.8, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6898384, y: 6.296983}
+  m_Size: {x: 2.2993526, y: 3.388116}
   m_EdgeRadius: 0
 --- !u!50 &767508624230055511
 Rigidbody2D:
@@ -167,7 +168,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0.5
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -194,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ce353fd68ac61498a64752941fa4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 20
   deathSequence:
     m_PersistentCalls:
       m_Calls:
@@ -244,3 +245,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+--- !u!114 &8101152399463475382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084377683824911544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23995aefb06e4f4d937c01844e6f40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.2
+  flashCount: 2

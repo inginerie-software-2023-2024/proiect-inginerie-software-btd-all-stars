@@ -17,14 +17,14 @@ public class BoschetarController : GenericEnemyController
     [SerializeField]
     private Transform _launchOffSet;
 
-    private Vector3 _shootDirection;
     private bool _cooldown;
 
 
     protected new void Start()
     {
         base.Start();
-        _shootDirection = Vector2.Perpendicular(_movementDirection).normalized;
+        attackingDirection = Vector2.Perpendicular(_movementDirection).normalized;
+        Debug.Log(attackingDirection);
         target = GameObject.FindWithTag("Player").transform;
     }
 
@@ -48,28 +48,30 @@ public class BoschetarController : GenericEnemyController
         if (currentState == EnemyState.idle || currentState == EnemyState.moving)
         {
             
-            Vector3 moveDirection = Vector3.Project(target.position - transform.position, _movementDirection);
+            movementDirection = Vector3.Project(target.position - transform.position, _movementDirection);
 
-            if (moveDirection.magnitude <= 0.1f)
+            if (movementDirection.magnitude <= 0.1f)
+            {
+                currentState = EnemyState.idle;
+                movementDirection = attackingDirection;
                 return;
+            }
 
             currentState = EnemyState.moving;
 
             if (TargetIsOnLine())
             {
-                moveDirection *= -1;
+                movementDirection *= -1;
             }
-            
 
-            enemyRigidbody.MovePosition(transform.position + speed * Time.deltaTime * moveDirection.normalized);
+            enemyRigidbody.MovePosition(transform.position + speed * Time.deltaTime * movementDirection.normalized);
         }
     }
 
     public void Shoot()
     {
-        
         ProjectileBehaviour newBullet = Instantiate(_projectilePrefab, _launchOffSet.position, Quaternion.identity);
-        newBullet.transform.right = _shootDirection;
+        newBullet.transform.right = attackingDirection;
         _cooldown = true;
         currentState = EnemyState.idle;
         StartCoroutine(Helpers.SetTimer(_cooldownDuration, () => _cooldown = false));
@@ -77,6 +79,41 @@ public class BoschetarController : GenericEnemyController
 
     private bool TargetIsOnLine()
     {
-        return Vector3.Project(target.position - transform.position, _shootDirection).magnitude <= _fearRadius; 
+        return Vector3.Project(target.position - transform.position, attackingDirection).magnitude <= _fearRadius; 
     }
+
+    protected override void UpdateAnimation()
+    {
+        switch (currentState)
+        {
+            case EnemyState.idle:
+                enemyAnimator.SetBool("moving", false);
+                enemyAnimator.SetBool("attacking", false);
+                enemyAnimator.SetFloat("moveX", movementDirection.x);
+                enemyAnimator.SetFloat("moveY", movementDirection.y);
+                break;
+
+            case EnemyState.moving:
+                enemyAnimator.SetFloat("moveX", movementDirection.x);
+                enemyAnimator.SetFloat("moveY", movementDirection.y);
+                enemyAnimator.SetBool("moving", true);
+                enemyAnimator.SetBool("attacking", false);
+                break;
+
+            case EnemyState.staggered:
+                enemyAnimator.SetBool("moving", false);
+                enemyAnimator.SetBool("attacking", false);
+                break;
+            case EnemyState.dying:
+                enemyAnimator.SetBool("dying", true);
+                break;
+            case EnemyState.attacking:
+                enemyAnimator.SetBool("attacking", true);
+                enemyAnimator.SetFloat("moveX", attackingDirection.x);
+                enemyAnimator.SetFloat("moveY", attackingDirection.y);
+
+                break;
+        }
+    }
+
 }
