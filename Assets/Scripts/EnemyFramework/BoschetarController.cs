@@ -105,6 +105,8 @@ public class BoschetarController : GenericEnemyController
                 enemyAnimator.SetBool("attacking", false);
                 break;
             case EnemyState.dying:
+                enemyAnimator.SetBool("moving", false);
+                enemyAnimator.SetBool("attacking", false);
                 enemyAnimator.SetBool("dying", true);
                 break;
             case EnemyState.attacking:

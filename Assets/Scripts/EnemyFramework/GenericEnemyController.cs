@@ -23,7 +23,13 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     protected Animator enemyAnimator;
     protected Vector3 movementDirection;
     protected Vector3 attackingDirection;
+    
     protected Transform target;
+
+    protected Coroutine stagger;
+
+    [SerializeField]
+    protected float _staggerTime = 0.32f;
     //Initialization
     protected void Start()
     {
@@ -106,8 +112,15 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     //While staggered, it does not do anything
     public virtual void OnHit(OnHitPayload payload)
     {
+        if (currentState == EnemyState.dying)
+            return;
+
         movementDirection = Vector3.zero;
-        StartCoroutine(Stagger(0.32f));
+        if(currentState == EnemyState.staggered)
+        {
+            StopCoroutine(stagger);
+        }
+        stagger = StartCoroutine(Stagger(_staggerTime));
     }
 
     protected IEnumerator Stagger(float seconds)

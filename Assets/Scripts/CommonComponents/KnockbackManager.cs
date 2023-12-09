@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class KnockbackManager : MonoBehaviour, IOnHitSubscriber
 {
-    public float knockbackAmount;
+    public float knockbackStrength;
 
     private Rigidbody2D entityRigidbody;
+
+    [SerializeField]
+    private float _knockbackDuration = 0.32f;
 
     private void Start()
     {
@@ -17,9 +20,9 @@ public class KnockbackManager : MonoBehaviour, IOnHitSubscriber
     {
         Vector3 hitDirection = transform.position - payload.position;
         Vector2 knockbackDireciton = hitDirection.normalized;
-        GetComponent<Rigidbody2D>().AddForce(knockbackDireciton * knockbackAmount, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(knockbackDireciton * knockbackStrength, ForceMode2D.Impulse);
 
-        StartCoroutine(StopKnockback(0.32f));
+        StartCoroutine(StopKnockback(_knockbackDuration));
     }
 
     private IEnumerator StopKnockback(float seconds)

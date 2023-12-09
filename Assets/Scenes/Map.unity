@@ -1117,7 +1117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec28e5d8cddadb34181fab740f4447f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackAmount: 5
+  knockbackStrength: 5
+  _knockbackDuration: 0.32
 --- !u!320 &147985539
 PlayableDirector:
   m_ObjectHideFlags: 0
