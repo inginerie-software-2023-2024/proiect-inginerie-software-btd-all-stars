@@ -10,6 +10,7 @@ public static class Helpers
     {
         yield return new WaitForSeconds(seconds);
         action();
+        yield return null;
     }
     //this helper method calls the given action for a given iteration count,
     //waiting a given amount of seconds between each call

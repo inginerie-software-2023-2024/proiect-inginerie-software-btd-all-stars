@@ -265,12 +265,12 @@ MonoBehaviour:
   currentState: 0
   _staggerTime: 1.5
   _alertRadius: 20
-  _slimesToSpawn: 0
-  _splitsLeft: 2
+  _slimesToSpawn: 2
+  _splitsLeft: 0
   _slimePrefab: {fileID: 5909320724880591142}
   _tilemapCollision:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!95 &3126204219803755310
 Animator:
   serializedVersion: 5

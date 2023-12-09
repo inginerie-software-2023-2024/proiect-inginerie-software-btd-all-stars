@@ -1,6 +1,7 @@
 
+using System.Collections;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 
 public class SlimeController : GenericEnemyController
 {
@@ -14,9 +15,6 @@ public class SlimeController : GenericEnemyController
     private float _splitsLeft = 2;
 
     [SerializeField]
-    private SlimeController _slimePrefab;
-
-    [SerializeField]
     private LayerMask _tilemapCollision;
 
     private Vector3 _scale;
@@ -27,6 +25,14 @@ public class SlimeController : GenericEnemyController
         base.Start();
         target = GameObject.FindWithTag("Player").transform;
         _scale = transform.localScale;
+        var hitbox = GetComponent<Hitbox>();
+        hitbox.MakeInvulnerable();
+        currentState = EnemyState.staggered;
+        StartCoroutine(Helpers.SetTimer(0.32f, () =>
+        {
+            hitbox.MakeVulnerable();
+            currentState = EnemyState.idle;
+        }));
 
     }
 
@@ -74,40 +80,34 @@ public class SlimeController : GenericEnemyController
     public override void DeathSequence()
     {
         _scale /= 2;
+        base.DeathSequence();
 
         if (_splitsLeft == 0)
-        {
-            base.DeathSequence();
+        { 
             return;
         }
+
+        var sprite = GetComponent<SpriteRenderer>();
+        sprite.flipX = false;
+        sprite.color = Color.white;
 
         for(int i = 0; i < _slimesToSpawn; ++i)
         {
             var newSlime = Instantiate(this, transform.parent);
+            
             newSlime._size = _size / 2;
             newSlime._splitsLeft = _splitsLeft- 1;
             newSlime.Scale();
 
-            Vector3 offset = new(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
-            newSlime.transform.position =  transform.position + offset;
-
-            if(PositionIsInvalid(newSlime)) {
-                newSlime.gameObject.SetActive(false);
-                Destroy(newSlime);
-                --i;
-                continue;
-            }
+            Disperse(newSlime);
 
             SendMessageUpwards("RegisterEnemy");
         }
-
-        base.DeathSequence();
     }
 
-    bool PositionIsInvalid(SlimeController slime)
+    private void Disperse(SlimeController newSlime)
     {
-        var slimeCollider = slime.GetComponent<BoxCollider2D>();
-        return Physics.CheckBox(slimeCollider.bounds.center, 1.5f * slimeCollider.bounds.extents, Quaternion.identity, _tilemapCollision);
+        Vector3 force = new(Random.Range(-2,2), Random.Range(-2,2));
+        newSlime.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
     }
-
 }

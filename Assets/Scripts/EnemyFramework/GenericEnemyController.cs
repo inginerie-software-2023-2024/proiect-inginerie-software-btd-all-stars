@@ -105,6 +105,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     public virtual void DeathSequence()
     {
         movementDirection = Vector3.zero;
+
         currentState = EnemyState.dying;
     }
 
