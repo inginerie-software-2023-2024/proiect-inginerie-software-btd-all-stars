@@ -16,7 +16,7 @@ public class CarSpawner : MonoBehaviour
     private void SpawnCar()
     {
         int randomIndex = Random.Range(0, carPrefabs.Length);
-        GameObject newCar = Instantiate(carPrefabs[randomIndex], transform.position, Quaternion.identity);
+        GameObject newCar = Instantiate(carPrefabs[randomIndex], transform.position, Quaternion.identity, transform);
         CarMovement carMovement = newCar.GetComponent<CarMovement>();
         carMovement.InitializeMovement(direction, speed);
     }
