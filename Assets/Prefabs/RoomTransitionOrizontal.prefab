@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3226626359441586669}
   - component: {fileID: 5428778885910731983}
   - component: {fileID: 585855232607421747}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RoomTransitionOrizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3883694103728267011}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.279115, y: -1.2741303, z: -3.8157637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5428778885910731983
 BoxCollider2D:

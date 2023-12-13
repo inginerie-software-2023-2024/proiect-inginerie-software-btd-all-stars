@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &9218640851051143628
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1464088479840248371, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Size.x
+      value: 2.7650046
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464088479840248371, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Size.y
+      value: 1.7160473
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464088479840248371, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.11749768
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464088479840248371, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.07343605
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464088479840248371, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280049926780495312, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677993994642182705, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Name
+      value: GreenCarExploding
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677993994642182705, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383379367475511320, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -128035413, guid: d105e6ef20d6c5a4a9eb0d34d49ec569, type: 3}
+    - target: {fileID: 4514057116909414597, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8be07976844f3844aad9d4c38c96121b, type: 2}
+    m_RemovedComponents:
+    - {fileID: 5090283111151098080, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+    - {fileID: 457137358138535454, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+    - {fileID: 1622743176273810401, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}

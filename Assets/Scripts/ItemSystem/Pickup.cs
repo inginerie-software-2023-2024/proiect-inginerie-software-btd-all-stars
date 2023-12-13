@@ -16,7 +16,7 @@ public abstract class Pickup : MonoBehaviour
     //Non-shop items should have price = 0 and no price display
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (inventory.coins >= _price)
+        if (inventory.coins >= _price && other.gameObject.CompareTag("Player"))
         {
             OnPickup(other.gameObject);
             inventory.coins -= _price;
