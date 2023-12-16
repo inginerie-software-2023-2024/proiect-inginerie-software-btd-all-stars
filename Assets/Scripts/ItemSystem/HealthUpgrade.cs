@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Sprites;
 using UnityEngine;
 
 public class HealthUpgrade : Pickup, IUpgrade
