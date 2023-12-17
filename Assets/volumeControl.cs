@@ -13,6 +13,7 @@ public class VolumeControl : MonoBehaviour
         if(!PlayerPrefs.HasKey("musicVolume"))
         {
             backgroundMusic.volume = 0.3f;
+            volumeSlider.value = 0.3f;
         }
         else
         {
