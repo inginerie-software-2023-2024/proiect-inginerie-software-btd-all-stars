@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     private Rigidbody2D playerRigidbody;
 
     public Inventory inventory;
+    public SaveManager saveManager;
     public ProjectileBehaviour projectilePrefab;
     public Transform launchOffSet;
     public HealthManager healthManager;
@@ -34,8 +35,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
 
-        inventory.potions = 3;
-        inventory.coins = 0;
+        transform.position = saveManager.state.playerPosition;
     }
 
     private void Update()

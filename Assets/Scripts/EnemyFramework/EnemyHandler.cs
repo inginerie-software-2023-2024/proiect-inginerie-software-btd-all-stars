@@ -5,8 +5,24 @@ public class EnemyHandler : MonoBehaviour
     private int enemies = 0;
     public bool RoomCleared { get; set; }
 
-    public Pickup rewardPrefab;
+    public Pickup RoomReward;
 
+    [SerializeField]
+    private SaveManager _saveManager;
+
+
+    public void Awake()
+    {
+        if (_saveManager.state.clearedRooms.Contains(this.GetInstanceID()))
+        {
+            RoomCleared = true;
+            BroadcastMessage("Despawn", null, SendMessageOptions.DontRequireReceiver);
+            if (RoomReward != null)
+            {
+                RoomReward.gameObject.SetActive(true);
+            }
+        }
+    }
     //wakes up all child enemies
     public void WakeUpEnemies()
     {
@@ -31,9 +47,9 @@ public class EnemyHandler : MonoBehaviour
         {
             RoomCleared = true;
             BroadcastMessage("DisableWall",null,SendMessageOptions.DontRequireReceiver);
-            if (rewardPrefab != null)
+            if (RoomReward != null)
             {
-                Instantiate(rewardPrefab, transform.position, Quaternion.identity);
+                RoomReward.gameObject.SetActive(true);
             }
         }
     }

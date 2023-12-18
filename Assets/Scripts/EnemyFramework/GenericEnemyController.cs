@@ -136,6 +136,12 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         SendMessageUpwards("RegisterEnemy");
     }
 
+    protected void Despawn()
+    {
+        this.enabled = false;
+        Destroy(gameObject);
+    }
+
     protected static bool MovementIsHorizontal(Vector3 direction)
     {
         return Mathf.Abs(Vector3.Dot(direction, Vector3.right))

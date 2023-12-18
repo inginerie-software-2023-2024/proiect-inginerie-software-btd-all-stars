@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour
@@ -8,6 +9,21 @@ public abstract class Pickup : MonoBehaviour
     private bool _reusable;
     [SerializeField]
     protected Inventory inventory;
+    [SerializeField]
+    protected SaveManager _saveManager;
+
+    public void Awake()
+    {
+        if (_saveManager.state.pickups.Contains(this.GetInstanceID()))
+        {
+            if (!_reusable)
+            {
+                var player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
+                OnPickup(player);
+                Destroy(gameObject);
+            }
+        }
+    }
 
     //Method to implement for any class extending pickup
     public abstract void OnPickup(GameObject picker);
@@ -21,6 +37,7 @@ public abstract class Pickup : MonoBehaviour
             OnPickup(other.gameObject);
             inventory.coins -= _price;
             if (!_reusable) {
+                _saveManager.AddPickup(this);
                 Destroy(gameObject);
             }
             

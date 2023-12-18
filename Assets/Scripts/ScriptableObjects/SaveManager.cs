@@ -9,45 +9,78 @@ using UnityEngine;
 public class SaveManager : ScriptableObject
 {
     [Serializable]
-    class GameState
+    public class GameState
     {
         public Vector2 playerPosition;
-        public List<string> upgrades;
+        public int coins;
+        public int potions;
+        public List<int> pickups;
         public List<int> clearedRooms;
     }
 
-    private GameState _state;
+    public GameState state;
 
     [SerializeField]
     private string _file;
     [SerializeField]
     private Inventory _inventory;
+
+    public bool saveExists = false;
     public void Save()
     {
         var player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
-        _state.playerPosition = player.transform.position;
+        state.playerPosition = player.transform.position;
+
+        state.coins = _inventory.coins;
+        state.potions = _inventory.potions;
         
-        _state.upgrades.Clear();
-        foreach(var upgrade in _inventory.upgrades)
-        {
-            _state.upgrades.Add(upgrade.GetType().Name);
-        }
         var rooms = FindObjectsByType<EnemyHandler>(FindObjectsSortMode.InstanceID);
-        _state.clearedRooms.Clear();
+        state.clearedRooms.Clear();
         for(int i = 0; i < rooms.Length; i++)
         {
             
             if (rooms[i].RoomCleared)
             {
-                _state.clearedRooms.Add(i);
+                state.clearedRooms.Add(i);
             }
         }
 
         WriteToSaveFile();
 
     }
+    public void Load()
+    {
+        LoadFromSaveFile();
+
+        _inventory.coins = state.coins;
+        _inventory.potions = state.potions;
+
+    }
     private void WriteToSaveFile()
     {
-        File.WriteAllText(_file, JsonUtility.ToJson(_state));
+        File.WriteAllText(_file, JsonUtility.ToJson(state));
+    }
+
+    private void LoadFromSaveFile()
+    {
+        state = JsonUtility.FromJson<GameState>(File.ReadAllText(_file));
+    }
+   
+    public void CheckSaves()
+    {
+        saveExists = File.Exists(_file);
+    }
+
+    public void AddPickup(Pickup pickup)
+    {
+        state.pickups.Add(pickup.gameObject.GetInstanceID());
+    }
+    public void Clear()
+    {
+        state.playerPosition = new(-19, 1);
+        state.coins = 0;
+        state.potions = 3;
+        state.clearedRooms = new();
+        state.pickups = new();
     }
 }

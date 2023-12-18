@@ -147,8 +147,9 @@ MonoBehaviour:
   _price: 25
   _reusable: 0
   inventory: {fileID: 11400000, guid: 874e9bf9a9d6bb240849f139de12e37e, type: 2}
+  _saveManager: {fileID: 11400000, guid: db672004bd5233644bf7abb2c518d82a, type: 2}
   _healthUp: 2
-  _target: {fileID: 127393694524266764, guid: 03373f6d87fd6a04e9d9b2d286ca35ba, type: 3}
+  target: {fileID: 0}
   _sprite: {fileID: 983791598, guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0, type: 3}
 --- !u!1 &2839286048865507704
 GameObject:
