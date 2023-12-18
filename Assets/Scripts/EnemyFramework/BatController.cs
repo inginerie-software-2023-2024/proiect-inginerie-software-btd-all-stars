@@ -18,15 +18,13 @@ namespace EnemyFramework
         }
         protected override void AttackSequence()
         {
-            currentState = EnemyState.attacking;
-            StartCoroutine(AttackRoutine());
+            return;
         }
 
         protected override bool ConditionIsSatisfied()
         {
 
-            return (currentState == EnemyState.moving || currentState == EnemyState.idle) 
-                   && (target.position - transform.position).magnitude > _alertRadius ;
+            return false;
 
         }
         protected override void IdleBehaviour()
@@ -43,15 +41,6 @@ namespace EnemyFramework
                 enemyRigidbody.MovePosition(transform.position + speed * Time.deltaTime * movementDirection);
 
             }
-        }
-
-        protected IEnumerator AttackRoutine()
-        {
-            movementDirection = target.transform.position - transform.position;
-            yield return new WaitForSeconds(0.001f);
-            movementDirection = movementDirection.normalized;
-            currentState = EnemyState.attacking;
-            enemyRigidbody.MovePosition(transform.position + speed * Time.deltaTime * movementDirection);
         }
     }
 }
