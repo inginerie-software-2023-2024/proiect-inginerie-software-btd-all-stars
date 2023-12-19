@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1464088479840248371}
   - component: {fileID: 5090283111151098080}
   - component: {fileID: 457137358138535454}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: RedCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

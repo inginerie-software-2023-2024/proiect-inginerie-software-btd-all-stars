@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueCar
       objectReference: {fileID: 0}
+    - target: {fileID: 3677993994642182705, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4383379367475511320, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
       propertyPath: m_Sprite
       value: 
