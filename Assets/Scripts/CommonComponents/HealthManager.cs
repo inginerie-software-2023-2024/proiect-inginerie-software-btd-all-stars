@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class HealthManager : MonoBehaviour, IOnHitSubscriber
 {
     public int maxHealth = 10;
-    public int CurrentHealth { get; private set; }
+    public int CurrentHealth { get; set; }
 
     public UnityEvent deathSequence;
 
@@ -27,5 +27,4 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
         
         CurrentHealth += value;
     }
-
 }

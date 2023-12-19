@@ -19,7 +19,10 @@ public abstract class Pickup : MonoBehaviour
             if (!_reusable)
             {
                 var player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
+                var healthManager = player.GetComponent<HealthManager>();
+                var health = healthManager.CurrentHealth;
                 OnPickup(player);
+                healthManager.CurrentHealth = health;
                 Destroy(gameObject);
             }
         }

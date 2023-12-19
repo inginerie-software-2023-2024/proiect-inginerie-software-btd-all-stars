@@ -17,7 +17,7 @@ public class EnemyHandler : MonoBehaviour
         {
             RoomCleared = true;
             BroadcastMessage("Despawn", null, SendMessageOptions.DontRequireReceiver);
-            BroadcastMessage("EnableWall", null, SendMessageOptions.DontRequireReceiver);
+            BroadcastMessage("DisableWall", null, SendMessageOptions.DontRequireReceiver);
             if (RoomReward != null)
             {
                 RoomReward.gameObject.SetActive(true);

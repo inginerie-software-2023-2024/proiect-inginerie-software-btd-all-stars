@@ -12,6 +12,7 @@ public class SaveManager : ScriptableObject
     public class GameState
     {
         public Vector2 playerPosition;
+        public int health;
         public int coins;
         public int potions;
         public List<Vector3> pickups;
@@ -31,6 +32,7 @@ public class SaveManager : ScriptableObject
         var player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
         state.playerPosition = player.transform.position;
 
+        state.health = player.GetComponent<HealthManager>().CurrentHealth;
         state.coins = _inventory.coins;
         state.potions = _inventory.potions;
         
@@ -50,10 +52,14 @@ public class SaveManager : ScriptableObject
     }
     public void Load()
     {
-        LoadFromSaveFile();
-
-        _inventory.coins = state.coins;
-        _inventory.potions = state.potions;
+        if (SaveExists)
+        {
+            LoadFromSaveFile();
+        }
+        else
+        {
+            Clear();
+        }
 
     }
     private void WriteToSaveFile()
@@ -66,6 +72,7 @@ public class SaveManager : ScriptableObject
         state = JsonUtility.FromJson<GameState>(File.ReadAllText(_file));
         _inventory.coins = state.coins;
         _inventory.potions = state.potions;
+        _inventory.upgrades.Clear();
     }
 
     public void AddPickup(Pickup pickup)
@@ -77,6 +84,7 @@ public class SaveManager : ScriptableObject
         File.Delete(_file);
 
         state.playerPosition = new(-19, 1);
+        state.health = 10;
         state.coins = 0;
         state.potions = 3;
         state.clearedRooms = new();
@@ -84,5 +92,6 @@ public class SaveManager : ScriptableObject
 
         _inventory.coins = state.coins;
         _inventory.potions = state.potions;
+        _inventory.upgrades.Clear();
     }
 }

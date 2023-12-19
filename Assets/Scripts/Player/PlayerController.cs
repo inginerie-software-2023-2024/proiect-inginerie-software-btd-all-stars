@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         animator.SetFloat("moveY", -1);
 
         transform.position = saveManager.state.playerPosition;
+        healthManager.CurrentHealth = saveManager.state.health;
     }
 
     private void Update()
