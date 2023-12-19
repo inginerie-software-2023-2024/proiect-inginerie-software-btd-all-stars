@@ -23,9 +23,7 @@ namespace EnemyFramework
 
         protected override bool ConditionIsSatisfied()
         {
-
             return false;
-
         }
         protected override void IdleBehaviour()
         {
