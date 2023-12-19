@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2249319666164618747}
   - component: {fileID: 7917374888344469592}
   - component: {fileID: 7768080550741827989}
-  - component: {fileID: 8741193952485029607}
+  - component: {fileID: 8148171726395399707}
   m_Layer: 9
   m_Name: Rat
   m_TagString: Enemy
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
---- !u!114 &8741193952485029607
+--- !u!114 &8148171726395399707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
