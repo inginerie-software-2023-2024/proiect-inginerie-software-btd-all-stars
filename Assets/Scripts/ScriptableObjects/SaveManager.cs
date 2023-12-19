@@ -14,8 +14,8 @@ public class SaveManager : ScriptableObject
         public Vector2 playerPosition;
         public int coins;
         public int potions;
-        public List<int> pickups;
-        public List<int> clearedRooms;
+        public List<Vector3> pickups;
+        public List<string> clearedRooms;
     }
 
     public GameState state;
@@ -25,7 +25,7 @@ public class SaveManager : ScriptableObject
     [SerializeField]
     private Inventory _inventory;
 
-    public bool saveExists = false;
+    public bool SaveExists { get => File.Exists(_file); }
     public void Save()
     {
         var player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
@@ -34,14 +34,14 @@ public class SaveManager : ScriptableObject
         state.coins = _inventory.coins;
         state.potions = _inventory.potions;
         
-        var rooms = FindObjectsByType<EnemyHandler>(FindObjectsSortMode.InstanceID);
+        var rooms = FindObjectsByType<EnemyHandler>(FindObjectsSortMode.None);
         state.clearedRooms.Clear();
-        for(int i = 0; i < rooms.Length; i++)
+        foreach(var room in rooms)
         {
             
-            if (rooms[i].RoomCleared)
+            if (room.RoomCleared)
             {
-                state.clearedRooms.Add(i);
+                state.clearedRooms.Add(room.gameObject.name);
             }
         }
 
@@ -64,23 +64,25 @@ public class SaveManager : ScriptableObject
     private void LoadFromSaveFile()
     {
         state = JsonUtility.FromJson<GameState>(File.ReadAllText(_file));
-    }
-   
-    public void CheckSaves()
-    {
-        saveExists = File.Exists(_file);
+        _inventory.coins = state.coins;
+        _inventory.potions = state.potions;
     }
 
     public void AddPickup(Pickup pickup)
     {
-        state.pickups.Add(pickup.gameObject.GetInstanceID());
+        state.pickups.Add(pickup.transform.position);
     }
     public void Clear()
     {
+        File.Delete(_file);
+
         state.playerPosition = new(-19, 1);
         state.coins = 0;
         state.potions = 3;
         state.clearedRooms = new();
         state.pickups = new();
+
+        _inventory.coins = state.coins;
+        _inventory.potions = state.potions;
     }
 }

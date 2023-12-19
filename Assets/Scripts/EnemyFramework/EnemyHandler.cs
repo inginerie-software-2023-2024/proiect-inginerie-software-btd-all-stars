@@ -13,10 +13,11 @@ public class EnemyHandler : MonoBehaviour
 
     public void Awake()
     {
-        if (_saveManager.state.clearedRooms.Contains(this.GetInstanceID()))
+        if (_saveManager.state.clearedRooms.Contains(name))
         {
             RoomCleared = true;
             BroadcastMessage("Despawn", null, SendMessageOptions.DontRequireReceiver);
+            BroadcastMessage("EnableWall", null, SendMessageOptions.DontRequireReceiver);
             if (RoomReward != null)
             {
                 RoomReward.gameObject.SetActive(true);

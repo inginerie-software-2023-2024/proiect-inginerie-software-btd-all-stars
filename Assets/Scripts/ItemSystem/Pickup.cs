@@ -14,7 +14,7 @@ public abstract class Pickup : MonoBehaviour
 
     public void Awake()
     {
-        if (_saveManager.state.pickups.Contains(this.GetInstanceID()))
+        if (_saveManager.state.pickups.Contains(transform.position))
         {
             if (!_reusable)
             {
