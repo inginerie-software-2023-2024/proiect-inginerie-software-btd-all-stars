@@ -7,6 +7,7 @@ public class PauseManager : MonoBehaviour
     public GameObject optionsPanel;
     public GameObject inventoryPanel;
     public GameObject player;
+	public GameObject point;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +24,16 @@ public class PauseManager : MonoBehaviour
             isPaused = !isPaused;
             if(isPaused)
             {
+                point.transform.position = player.transform.position;
+                point.SetActive(true);
                 pausePanel.SetActive(true);
                 player.SetActive(false);
                 Time.timeScale = 0f;
                 InventoryOpen();
             }
             else
-            {
+            {	
+				point.SetActive(false);
                 pausePanel.SetActive(false);
                 Time.timeScale = 1f;
                 player.SetActive(true);
@@ -39,7 +43,8 @@ public class PauseManager : MonoBehaviour
 
     //Close the pause menu
     public void Resume()
-    {
+    {	
+		point.SetActive(false);
         isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
