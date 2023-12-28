@@ -10,6 +10,8 @@ public class EnemyHandler : MonoBehaviour
     [SerializeField]
     private SaveManager _saveManager;
 
+    [SerializeField] 
+    private GameObject _minimapTiles;
 
     public void Awake()
     {
@@ -22,6 +24,9 @@ public class EnemyHandler : MonoBehaviour
             {
                 RoomReward.gameObject.SetActive(true);
             }
+            if (_minimapTiles != null) {
+                _minimapTiles.SetActive(true);
+            }
         }
     }
     //wakes up all child enemies
@@ -32,7 +37,12 @@ public class EnemyHandler : MonoBehaviour
         {
             //if room has not been cleared, enable the walls
             BroadcastMessage("EnableWall", null, SendMessageOptions.DontRequireReceiver);
+
         }
+
+        if (_minimapTiles != null) {
+                _minimapTiles.SetActive(true);
+            }
     }
 
     //If there is at least one enemy, room has not been cleared
@@ -53,5 +63,9 @@ public class EnemyHandler : MonoBehaviour
                 RoomReward.gameObject.SetActive(true);
             }
         }
+    }
+
+    public void ActicateMinimapRoom(){
+
     }
 }
