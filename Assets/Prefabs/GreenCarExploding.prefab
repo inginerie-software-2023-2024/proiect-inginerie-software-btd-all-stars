@@ -94,5 +94,48 @@ PrefabInstance:
     - {fileID: 1622743176273810401, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3677993994642182705, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6860292127027182334}
+    - targetCorrespondingSourceObject: {fileID: 3677993994642182705, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6985445630857860120}
   m_SourcePrefab: {fileID: 100100000, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+--- !u!95 &4704596997040720137 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4514057116909414597, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+  m_PrefabInstance: {fileID: 9218640851051143628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5541095568826446845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3677993994642182705, guid: f2f4df957d65b0c498c34635cc04ec86, type: 3}
+  m_PrefabInstance: {fileID: 9218640851051143628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-6860292127027182334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541095568826446845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596d5ba61f377c042b101854edd90c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+--- !u!114 &6985445630857860120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541095568826446845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb04bdb1001ad499fd2ea094024076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageThreshold: 6
+  _carAnimator: {fileID: 4704596997040720137}
