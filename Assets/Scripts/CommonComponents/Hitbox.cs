@@ -3,7 +3,8 @@ using UnityEngine;
 public enum HitboxType
 {
     Player,
-    Enemy
+    Enemy,
+    Map
 }
 public class Hitbox : MonoBehaviour
 {
