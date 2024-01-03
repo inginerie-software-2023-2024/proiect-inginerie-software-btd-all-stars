@@ -5,7 +5,7 @@ public class LayerChanger : MonoBehaviour
     private Transform targetPlayer;
 
     [SerializeField]
-    private float _treashold = 0.5f;
+    private float _threshold = 0.5f;
     public void Start()
     {
         targetPlayer = GameObject.FindWithTag("Player").transform;
@@ -14,7 +14,7 @@ public class LayerChanger : MonoBehaviour
     //if the player is below it, or above otherwise
     protected void FixedUpdate()
     {
-        if (targetPlayer.position.y - _treashold > transform.position.y)
+        if (targetPlayer.position.y - _threshold > transform.position.y)
         {
             GetComponent<SpriteRenderer>().sortingOrder = 5;
         }
