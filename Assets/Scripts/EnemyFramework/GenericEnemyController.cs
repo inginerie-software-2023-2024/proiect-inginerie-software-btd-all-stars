@@ -28,6 +28,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
 
     [SerializeField]
     protected float _staggerTime = 0.32f;
+    
     //Initialization
     protected void Start()
     {
@@ -119,6 +120,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         {
             StopCoroutine(stagger);
         }
+        
         stagger = StartCoroutine(Stagger(_staggerTime));
     }
 

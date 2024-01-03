@@ -7,7 +7,6 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
     public int CurrentHealth { get; set; }
 
     public UnityEvent deathSequence;
-
     private void Start()
     {
         CurrentHealth = maxHealth;
@@ -19,7 +18,7 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
         CurrentHealth -= payload.damage;
         if (CurrentHealth <= 0)
         {
-            deathSequence.Invoke();
+            deathSequence.Invoke();     
         }
     }
 

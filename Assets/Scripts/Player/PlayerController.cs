@@ -23,14 +23,15 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     public ProjectileBehaviour projectilePrefab;
     public Transform launchOffSet;
     public HealthManager healthManager;
-
+    public AudioSource deathSound;
+    public AudioSource gunShotSound;
+    public AudioSource crowbarAttackSound;
     private void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         healthManager = GetComponent<HealthManager>();
         currentState = PlayerState.idle;
-
         // Set default animation
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
@@ -104,9 +105,10 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     private IEnumerator LeftAttackSequence()
     {
         currentState = PlayerState.attacking;
+        crowbarAttackSound.Play();
         animator.SetBool(inventory.leftWeapon.type + "attacking", true);
         yield return null;
-
+        
         animator.SetBool(inventory.leftWeapon.type + "attacking", false);
         yield return new WaitForSeconds(inventory.leftWeapon.waitingTime);
         currentState = PlayerState.idle;
@@ -130,6 +132,8 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         float moveX = animator.GetFloat("moveX");
         float moveY = animator.GetFloat("moveY");
         Vector2 shootDirection = moveX != 0 ? new Vector2(moveX, 0) : new Vector2(0, moveY);
+        gunShotSound.time = 0.3f;
+        gunShotSound.Play();
         ProjectileBehaviour newBullet = Instantiate(projectilePrefab, launchOffSet.position, Quaternion.identity);
         newBullet.transform.right = shootDirection;
     }
@@ -143,6 +147,8 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     //Stagger OnHit handler
     public void OnHit(OnHitPayload payload)
     {
+        deathSound.time = 0.6f;
+        deathSound.Play();
         StartCoroutine(Stagger(0.32f));
     }
 
@@ -152,7 +158,6 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         yield return new WaitForSeconds(seconds);
         currentState = PlayerState.idle;
     }
-
     //Upon Death, exit to Main Menu
     public void DeathSequence()
     {

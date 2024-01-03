@@ -10,7 +10,7 @@ public class DogController : GenericEnemyController
     public float jumpRadius;
     public float alertRadius;
 
-
+    public AudioSource hitSound;
     protected new void Start()
     {
         base.Start();
@@ -63,6 +63,8 @@ public class DogController : GenericEnemyController
     //Overrides the stagger handler
     public override void OnHit(OnHitPayload payload)
     {
+        hitSound.time = 0.1f;
+        hitSound.Play();
         return;
     }
 
