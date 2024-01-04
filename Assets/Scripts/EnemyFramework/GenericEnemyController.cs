@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public enum EnemyState
@@ -105,7 +106,9 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     public virtual void DeathSequence()
     {
         movementDirection = Vector3.zero;
-
+        var kill = GameObject.FindGameObjectsWithTag("kill").FirstOrDefault();
+        var killSound = kill.GetComponent<AudioSource>();
+        killSound.Play();
         currentState = EnemyState.dying;
     }
 

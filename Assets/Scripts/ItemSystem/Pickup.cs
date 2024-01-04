@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Video;
 
 public abstract class Pickup : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public abstract class Pickup : MonoBehaviour
     protected Inventory inventory;
     [SerializeField]
     protected SaveManager _saveManager;
-    public AudioSource pickupSound;
     public void Awake()
     {
         if (_saveManager.state.pickups.Contains(transform.position))
@@ -37,9 +37,11 @@ public abstract class Pickup : MonoBehaviour
     {
         if (inventory.coins >= _price && other.gameObject.CompareTag("Player"))
         {
+            var pickup = GameObject.FindGameObjectsWithTag("pickup").FirstOrDefault();
+            var pickupSound = pickup.GetComponent<AudioSource>();
+            pickupSound.Play();
             OnPickup(other.gameObject);
             inventory.coins -= _price;
-            pickupSound.Play();
             if (!_reusable) {
                 _saveManager.AddPickup(this);
                 Destroy(gameObject);

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -163,6 +164,13 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     //Upon Death, exit to Main Menu
     public void DeathSequence()
     {
-        SceneManager.LoadScene("RestartScreen");
+        var death = GameObject.FindGameObjectsWithTag("mateydeath").FirstOrDefault();
+        var deathMatey = death.GetComponent<AudioSource>();
+        deathMatey.Play();
+        deathSound.Stop();
+        StartCoroutine(Helpers.SetTimer(0.46f, () =>
+        {
+            SceneManager.LoadScene("RestartScreen");
+        }));
     }
 }
