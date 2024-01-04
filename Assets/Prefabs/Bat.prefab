@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4470696617591923846}
   - component: {fileID: 8043060725792016965}
   - component: {fileID: -2325205031444806574}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006998383, y: 0.03098255}
+  m_Offset: {x: 0.0063510165, y: 0.030982554}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -190,7 +190,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3283982, y: 0.1898734}
+  m_Size: {x: 0.2157547, y: 0.1898734}
   m_EdgeRadius: 0
 --- !u!114 &-3787111563742970578
 MonoBehaviour:
@@ -252,12 +252,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b368ca337fe48da976e1d5f58827a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 20
   enemyName: Bat
   currentState: 0
   _staggerTime: 0.32
-  _alertRadius: 12
-  _movementDirection: {x: 0, y: 0}
+  _maxSpeed: 10
 --- !u!114 &-2325205031444806574
 MonoBehaviour:
   m_ObjectHideFlags: 0

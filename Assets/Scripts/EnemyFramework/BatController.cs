@@ -6,14 +6,10 @@ namespace EnemyFramework
     public class BatController : GenericEnemyController
     {
         [SerializeField]
-        private float _alertRadius = 0.2f;
-
-        [SerializeField]
-        private Vector2 _movementDirection;
+        private float _maxSpeed;
         protected new void Start()
         {
             base.Start();
-            attackingDirection = Vector2.Perpendicular(_movementDirection).normalized;
             target = GameObject.FindWithTag("Player").transform;
         }
         protected override void AttackSequence()
@@ -31,12 +27,14 @@ namespace EnemyFramework
             {
                 movementDirection = (target.transform.position - transform.position);
 
-                if (movementDirection.magnitude > _alertRadius)
-                    return;
-
                 movementDirection = movementDirection.normalized;
                 currentState = EnemyState.moving;
-                enemyRigidbody.MovePosition(transform.position + speed * Time.deltaTime * movementDirection);
+                enemyRigidbody.AddForce(speed * Time.deltaTime * movementDirection, ForceMode2D.Impulse);
+                
+                if(enemyRigidbody.velocity.magnitude > _maxSpeed)
+                {
+                    enemyRigidbody.velocity = enemyRigidbody.velocity.normalized * _maxSpeed;
+                }
 
             }
         }
