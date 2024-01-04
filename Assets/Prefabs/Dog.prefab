@@ -667,6 +667,7 @@ MonoBehaviour:
   enemyName: Dog
   currentState: 0
   _staggerTime: 0.32
+  audioSource: {fileID: 7188203951498528741}
   jumpSpeed: 12
   jumpRadius: 3
   alertRadius: 10
@@ -738,7 +739,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f9e9b524033b52c429375cccaaf48f0a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

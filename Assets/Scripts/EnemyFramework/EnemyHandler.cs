@@ -13,6 +13,9 @@ public class EnemyHandler : MonoBehaviour
     [SerializeField] 
     private GameObject _minimapTiles;
 
+    [SerializeField] 
+    private AudioSource endSound;
+    
     public void Awake()
     {
         if (_saveManager.state.clearedRooms.Contains(name))
@@ -58,6 +61,7 @@ public class EnemyHandler : MonoBehaviour
         {
             RoomCleared = true;
             BroadcastMessage("DisableWall",null,SendMessageOptions.DontRequireReceiver);
+            endSound.Play();
             if (RoomReward != null)
             {
                 RoomReward.gameObject.SetActive(true);

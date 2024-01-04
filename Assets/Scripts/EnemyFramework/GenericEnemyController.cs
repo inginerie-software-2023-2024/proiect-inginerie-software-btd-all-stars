@@ -28,7 +28,8 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
 
     [SerializeField]
     protected float _staggerTime = 0.32f;
-    
+
+    public AudioSource audioSource;
     //Initialization
     protected void Start()
     {
@@ -122,6 +123,8 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         }
         
         stagger = StartCoroutine(Stagger(_staggerTime));
+        audioSource.time = 0.1f;
+        audioSource.Play();
     }
 
     protected IEnumerator Stagger(float seconds)

@@ -11,7 +11,7 @@ public abstract class Pickup : MonoBehaviour
     protected Inventory inventory;
     [SerializeField]
     protected SaveManager _saveManager;
-
+    public AudioSource pickupSound;
     public void Awake()
     {
         if (_saveManager.state.pickups.Contains(transform.position))
@@ -39,6 +39,7 @@ public abstract class Pickup : MonoBehaviour
         {
             OnPickup(other.gameObject);
             inventory.coins -= _price;
+            pickupSound.Play();
             if (!_reusable) {
                 _saveManager.AddPickup(this);
                 Destroy(gameObject);

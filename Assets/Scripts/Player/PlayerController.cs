@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     public AudioSource deathSound;
     public AudioSource gunShotSound;
     public AudioSource crowbarAttackSound;
+    public AudioSource healingSound;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         if(Input.GetKeyDown(KeyCode.E)){
             if(healthManager.CurrentHealth < healthManager.maxHealth && inventory.potions > 0){
                 inventory.potions--;
+                healingSound.Play();
                 healthManager.RestoreHealth(2);
                 }
         }
