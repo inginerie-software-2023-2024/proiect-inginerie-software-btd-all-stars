@@ -108,7 +108,7 @@ MonoBehaviour:
   enemyName: Boschetar
   currentState: 0
   _staggerTime: 0.32
-  audioSource: {fileID: -1391231188013633821}
+  _audioSource: {fileID: -1391231188013633821}
   _projectilePrefab: {fileID: 4000530902669160807, guid: 59a499009471b504db0c7aeae78249c7, type: 3}
   _movementDirection: {x: 0, y: 0}
   _cooldownDuration: 2
@@ -271,7 +271,7 @@ AudioSource:
   m_GameObject: {fileID: 1084377683824911544}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 9194985110779336764, guid: 5875e5ceb339837469bc272b6860dc1e, type: 2}
   m_audioClip: {fileID: 8300000, guid: f9e9b524033b52c429375cccaaf48f0a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5

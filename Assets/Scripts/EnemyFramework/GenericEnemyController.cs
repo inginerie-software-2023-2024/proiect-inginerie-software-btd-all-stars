@@ -29,12 +29,14 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
 
     [SerializeField]
     protected float _staggerTime = 0.32f;
-
-    public AudioSource audioSource;
+    
+    [SerializeField]
+    private AudioSource _audioSource;
     //Initialization
     protected void Start()
     {
         currentState = EnemyState.idle;
+        _audioSource.time = 0.1f;
         enemyRigidbody = GetComponent<Rigidbody2D>();
         enemyAnimator = GetComponent<Animator>();
     }
@@ -106,7 +108,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     public virtual void DeathSequence()
     {
         movementDirection = Vector3.zero;
-        var kill = GameObject.FindGameObjectsWithTag("kill").FirstOrDefault();
+        var kill = GameObject.FindWithTag("Kill");
         var killSound = kill.GetComponent<AudioSource>();
         killSound.Play();
         currentState = EnemyState.dying;
@@ -126,8 +128,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         }
         
         stagger = StartCoroutine(Stagger(_staggerTime));
-        audioSource.time = 0.1f;
-        audioSource.Play();
+        _audioSource.Play();
     }
 
     protected IEnumerator Stagger(float seconds)

@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         playerRigidbody = GetComponent<Rigidbody2D>();
         healthManager = GetComponent<HealthManager>();
         currentState = PlayerState.idle;
+        gunShotSound.time = 0.3f;
+        deathSound.time = 0.6f;
         // Set default animation
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
@@ -135,7 +137,6 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         float moveX = animator.GetFloat("moveX");
         float moveY = animator.GetFloat("moveY");
         Vector2 shootDirection = moveX != 0 ? new Vector2(moveX, 0) : new Vector2(0, moveY);
-        gunShotSound.time = 0.3f;
         gunShotSound.Play();
         ProjectileBehaviour newBullet = Instantiate(projectilePrefab, launchOffSet.position, Quaternion.identity);
         newBullet.transform.right = shootDirection;
@@ -150,7 +151,6 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     //Stagger OnHit handler
     public void OnHit(OnHitPayload payload)
     {
-        deathSound.time = 0.6f;
         deathSound.Play();
         StartCoroutine(Stagger(0.32f));
     }
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     //Upon Death, exit to Main Menu
     public void DeathSequence()
     {
-        var death = GameObject.FindGameObjectsWithTag("mateydeath").FirstOrDefault();
+        var death = GameObject.FindWithTag("MateyDeath");
         var deathMatey = death.GetComponent<AudioSource>();
         deathMatey.Play();
         deathSound.Stop();

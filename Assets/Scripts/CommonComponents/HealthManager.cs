@@ -18,7 +18,7 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
         CurrentHealth -= payload.damage;
         if (CurrentHealth <= 0)
         {
-            deathSequence.Invoke();     
+            deathSequence.Invoke();
         }
     }
 

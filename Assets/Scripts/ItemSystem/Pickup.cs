@@ -12,6 +12,7 @@ public abstract class Pickup : MonoBehaviour
     protected Inventory inventory;
     [SerializeField]
     protected SaveManager _saveManager;
+    
     public void Awake()
     {
         if (_saveManager.state.pickups.Contains(transform.position))
@@ -37,7 +38,7 @@ public abstract class Pickup : MonoBehaviour
     {
         if (inventory.coins >= _price && other.gameObject.CompareTag("Player"))
         {
-            var pickup = GameObject.FindGameObjectsWithTag("pickup").FirstOrDefault();
+            var pickup = GameObject.FindWithTag("Pickup");
             var pickupSound = pickup.GetComponent<AudioSource>();
             pickupSound.Play();
             OnPickup(other.gameObject);

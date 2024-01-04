@@ -7,9 +7,9 @@ TagManager:
   - Enemy
   - WeaponHitbox
   - destroyer
-  - pickup
-  - kill
-  - mateydeath
+  - MateyDeath
+  - Pickup
+  - Kill
   layers:
   - Default
   - TransparentFX

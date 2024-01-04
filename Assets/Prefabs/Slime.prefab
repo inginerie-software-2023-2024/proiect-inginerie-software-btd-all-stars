@@ -265,7 +265,7 @@ MonoBehaviour:
   enemyName: Slime
   currentState: 0
   _staggerTime: 1.5
-  audioSource: {fileID: 3766989283906668751}
+  _audioSource: {fileID: 3766989283906668751}
   _alertRadius: 20
   _slimesToSpawn: 2
   _splitsLeft: 0
@@ -302,7 +302,7 @@ AudioSource:
   m_GameObject: {fileID: 5018268588589313940}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 9194985110779336764, guid: 5875e5ceb339837469bc272b6860dc1e, type: 2}
   m_audioClip: {fileID: 8300000, guid: f9e9b524033b52c429375cccaaf48f0a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
