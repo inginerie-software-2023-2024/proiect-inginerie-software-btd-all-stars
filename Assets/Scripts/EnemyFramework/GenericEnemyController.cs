@@ -110,6 +110,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         movementDirection = Vector3.zero;
         var kill = GameObject.FindWithTag("Kill");
         var killSound = kill.GetComponent<AudioSource>();
+        killSound.time = 0.2f;
         killSound.Play();
         currentState = EnemyState.dying;
     }
