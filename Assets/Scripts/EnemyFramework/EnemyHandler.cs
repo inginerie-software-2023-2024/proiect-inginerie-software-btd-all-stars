@@ -44,7 +44,7 @@ public class EnemyHandler : MonoBehaviour
 
         if (_minimapTiles != null) {
                 _minimapTiles.SetActive(true);
-            }
+        }
     }
 
     //If there is at least one enemy, room has not been cleared

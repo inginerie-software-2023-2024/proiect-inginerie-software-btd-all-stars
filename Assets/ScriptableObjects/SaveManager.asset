@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state:
     playerPosition: {x: -19, y: 1}
-    health: 4
+    health: 6
     coins: 0
     potions: 3
-    pickups:
-    - {x: -19.694082, y: -5.7019196, z: 0.8088818}
+    pickups: []
     clearedRooms: []
   _file: save.json
   _inventory: {fileID: 11400000, guid: 874e9bf9a9d6bb240849f139de12e37e, type: 2}
