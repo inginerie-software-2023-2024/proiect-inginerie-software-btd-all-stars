@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomReward: {fileID: 0}
   _saveManager: {fileID: 11400000, guid: db672004bd5233644bf7abb2c518d82a, type: 2}
+  _minimapTiles: {fileID: 0}
   _endSound: {fileID: 5066654000483264055}
 --- !u!82 &5066654000483264055
 AudioSource:
@@ -57,9 +58,9 @@ AudioSource:
   m_GameObject: {fileID: 6647638553058338200}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 9194985110779336764, guid: 5875e5ceb339837469bc272b6860dc1e, type: 2}
   m_audioClip: {fileID: 8300000, guid: bd3ecc12a39e22547bceacf9e4610f10, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
