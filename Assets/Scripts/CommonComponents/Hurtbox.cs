@@ -42,7 +42,7 @@ public class Hurtbox : MonoBehaviour
         if (targets.Contains(hitbox.type) && !hitbox.Invulnerable)
         {
             OnHitPayload payload = new(attackDamage, transform.position);
-            ExecuteEvents.Execute<IOnHitSubscriber>(target, null, (handler, _) => handler.OnHit(payload));
+            ExecuteEvents.ExecuteHierarchy<IOnHitSubscriber>(target, null, (handler, _) => handler.OnHit(payload));
         }
     }
 
