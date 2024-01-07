@@ -19,7 +19,7 @@ public class Death : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GenerateLoot();
-        animator.gameObject.SendMessageUpwards("UnregisterEnemy");
+        animator.gameObject.SendMessageUpwards("UnregisterEnemy", null, SendMessageOptions.DontRequireReceiver);
         animator.gameObject.SetActive(false);
     }
 
