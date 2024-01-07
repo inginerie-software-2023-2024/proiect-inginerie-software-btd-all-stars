@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8043060725792016965}
   - component: {fileID: -2325205031444806574}
   - component: {fileID: 5231619199310211148}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,13 +253,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b368ca337fe48da976e1d5f58827a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 20
   enemyName: Bat
   currentState: 0
   _staggerTime: 0.32
   _audioSource: {fileID: 5231619199310211148}
-  _alertRadius: 12
-  _movementDirection: {x: 0, y: 0}
+  _maxSpeed: 10
 --- !u!114 &-2325205031444806574
 MonoBehaviour:
   m_ObjectHideFlags: 0
