@@ -3,9 +3,9 @@ using UnityEngine.XR;
 
 public class DragonController : GenericEnemyController
 {
-
     [SerializeField]
     private ProjectileBehaviour _projectilePrefab;
+
     [SerializeField]
     private Transform _launchOffSet;
 
@@ -28,10 +28,12 @@ public class DragonController : GenericEnemyController
     private bool _doMelee = false;
     private float _leftHandDistance;
     private float _handDistanceThird;
+    private bool _hasRightClaw = true;
+    private bool _hasLeftClaw = true;
+    private Vector3 offset = new(0, -0.5f, 0);
 
     protected Transform targetPlayer;
-    private Vector3 offset = new(0, -0.5f, 0);
-    private bool _hasRightClaw = true, _hasLeftClaw = true;
+
     protected new void Start()
     {
         base.Start();
@@ -39,6 +41,7 @@ public class DragonController : GenericEnemyController
         StartCoroutine(Helpers.SetTimer(_fireCooldownDuration, ResetCooldown));
         _handDistanceThird = Vector3.Distance(_leftClaw.transform.position, _rightClaw.transform.position) / 3f;
     }
+
     protected override void AttackSequence()
     {
         currentState = EnemyState.attacking;
@@ -132,7 +135,6 @@ public class DragonController : GenericEnemyController
     protected void Fire()
     {
         int attackType = Mathf.FloorToInt(Random.Range(0, 2));
-
         switch (attackType)
         {
             case 0:
@@ -160,10 +162,12 @@ public class DragonController : GenericEnemyController
         currentState = EnemyState.idle;
         enemyAnimator.SetBool("fire", false);
     }
+
     protected void ResetCooldown()
     {
         _fireCooldown = false;
     }
+
     protected void ResetAttacking()
     {
         currentState = EnemyState.idle;
@@ -176,7 +180,6 @@ public class DragonController : GenericEnemyController
     {
         return;
     }
-
 
     public void RightClawDeathStart()
     {
