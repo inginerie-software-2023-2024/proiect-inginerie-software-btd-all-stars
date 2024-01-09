@@ -10,7 +10,6 @@ TagManager:
   - MateyDeath
   - Pickup
   - Kill
-  - LowCollision
   layers:
   - Default
   - TransparentFX
@@ -26,7 +25,7 @@ TagManager:
   - FlyingEnemy
   - Car
   - Minimap
-  - 
+  - LowCollision
   - 
   - 
   - 

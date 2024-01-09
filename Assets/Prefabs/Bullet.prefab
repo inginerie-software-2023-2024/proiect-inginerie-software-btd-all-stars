@@ -123,7 +123,7 @@ MonoBehaviour:
   speed: 10
   _excludedLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16640
 --- !u!114 &2566001954485113459
 MonoBehaviour:
   m_ObjectHideFlags: 0
