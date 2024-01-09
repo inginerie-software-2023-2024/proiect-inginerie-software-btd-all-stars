@@ -6,8 +6,10 @@ public class PauseManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject optionsPanel;
     public GameObject inventoryPanel;
-    public GameObject player;
+    public PlayerController player;
     public GameObject point;
+
+    private PlayerState state;
 
     // Start is called before the first frame update
     void Start()
@@ -24,19 +26,20 @@ public class PauseManager : MonoBehaviour
             isPaused = !isPaused;
             if(isPaused)
             {
-                point.transform.position = player.transform.position;
+                point.transform.position = player.gameObject.transform.position;
                 point.SetActive(true);
                 pausePanel.SetActive(true);
-                player.SetActive(false);
+                state = player.currentState;
+                player.currentState = PlayerState.attacking;
                 Time.timeScale = 0f;
                 InventoryOpen();
             }
             else
-            {	
+            {
                 point.SetActive(false);
                 pausePanel.SetActive(false);
+                player.currentState = state;
                 Time.timeScale = 1f;
-                player.SetActive(true);
             }
         }
     }
@@ -47,8 +50,8 @@ public class PauseManager : MonoBehaviour
         point.SetActive(false);
         isPaused = false;
         pausePanel.SetActive(false);
+        player.currentState = state;
         Time.timeScale = 1f;
-        player.SetActive(true);
     }
 
     //Switch from inventory panel to options panel

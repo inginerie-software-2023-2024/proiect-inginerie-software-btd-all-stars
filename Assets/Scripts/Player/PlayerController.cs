@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     public float speed;
 
     private Animator animator;
-    private PlayerState currentState;
+    public PlayerState currentState;
     private Rigidbody2D playerRigidbody;
 
     public Inventory inventory;
