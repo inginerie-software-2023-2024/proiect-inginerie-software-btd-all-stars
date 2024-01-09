@@ -15,7 +15,7 @@ public class ProjectileBehaviour : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         //elegant way of checking if layermask does not contain the layer
-        if (_excludedLayers != (_excludedLayers | (1 << other.gameObject.layer)))
+        if (_excludedLayers != (_excludedLayers | (1 << other.gameObject.layer)) && other.gameObject.name != "Lake")
         {
             Destroy(gameObject);
         }   
