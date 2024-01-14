@@ -50,11 +50,11 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         //Attacking controlls
         if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking && inventory.leftWeapon)
         {
-            StartCoroutine(LeftAttackSequence());
+            LeftAttackSequence();
         }
         else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking && inventory.rightWeapon)
         {
-            StartCoroutine(RightAttackSequence());
+            RightAttackSequence();
         }
 
         //Healing Item
@@ -108,27 +108,27 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     }
 
     //Activates the LeftWeapon
-    private IEnumerator LeftAttackSequence()
+    private void LeftAttackSequence()
     {
+        animator.speed = inventory.leftWeapon.attackSpeed;
         currentState = PlayerState.attacking;
         crowbarAttackSound.Play();
         animator.SetBool(inventory.leftWeapon.type + "attacking", true);
-        yield return null;
-        
-        animator.SetBool(inventory.leftWeapon.type + "attacking", false);
-        yield return new WaitForSeconds(inventory.leftWeapon.waitingTime);
-        currentState = PlayerState.idle;
     }
 
     //Activates the RightWeapon
-    private IEnumerator RightAttackSequence()
+    private void RightAttackSequence()
     {
+        animator.speed = inventory.rightWeapon.attackSpeed;
         currentState = PlayerState.attacking;
         animator.SetBool(inventory.rightWeapon.type + "attacking", true);
-        yield return null;
+    }
 
+    public void ResetAttacking()
+    {
+        animator.speed = 1;
+        animator.SetBool(inventory.leftWeapon.type + "attacking", false);
         animator.SetBool(inventory.rightWeapon.type + "attacking", false);
-        yield return new WaitForSeconds(inventory.rightWeapon.waitingTime);
         currentState = PlayerState.idle;
     }
 

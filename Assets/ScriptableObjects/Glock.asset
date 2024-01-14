@@ -17,4 +17,4 @@ MonoBehaviour:
   type: 0
   size: 0
   damage: 1
-  waitingTime: 0.7
+  attackSpeed: 0.8

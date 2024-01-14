@@ -19,6 +19,5 @@ public class Weapon : ScriptableObject
     public WeaponType type;
     public WeaponSize size;
     public int damage;
-    public float waitingTime = 0.32f;
-
+    public float attackSpeed = 1;
 }

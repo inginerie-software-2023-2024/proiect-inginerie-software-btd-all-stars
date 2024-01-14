@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7f3829992d57c4ba6cfe926f8b1933, type: 3}
   m_Name: Crowbar
   m_EditorClassIdentifier: 
-  weaponSprite: {fileID: 661732559, guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0, type: 3}
   weaponName: Crowbar I
+  weaponSprite: {fileID: 661732559, guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0, type: 3}
   type: 1
-  damage: 2
-  waitingTime: 0.35
+  size: 0
+  damage: 5
+  attackSpeed: 1
