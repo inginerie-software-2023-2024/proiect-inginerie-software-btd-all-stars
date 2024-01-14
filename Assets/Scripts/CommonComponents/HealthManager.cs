@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +6,7 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
 {
     public int maxHealth = 10;
     public int CurrentHealth { get; set; }
+    public int Armor { get; set; } = 0;
 
     public UnityEvent deathSequence;
     private void Start()
@@ -15,7 +17,7 @@ public class HealthManager : MonoBehaviour, IOnHitSubscriber
     //subtracts damage when receiving a OnHit message
     public void OnHit(OnHitPayload payload)
     {
-        CurrentHealth -= payload.damage;
+        CurrentHealth -= Math.Max(payload.damage - Armor, 0);
         if (CurrentHealth <= 0)
         {
             deathSequence.Invoke();

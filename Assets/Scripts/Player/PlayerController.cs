@@ -43,17 +43,22 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
         transform.position = saveManager.state.playerPosition;
         healthManager.CurrentHealth = saveManager.state.health;
-        speed = saveManager.state.speed;
+        healthManager.Armor = saveManager.state.playerArmor;
+        speed = saveManager.state.playerSpeed;
     }
 
     private void Update()
     {
         //Attacking controlls
-        if (Input.GetButtonDown("LeftAttack") && currentState != PlayerState.attacking && inventory.leftWeapon)
+        if (Input.GetButtonDown("LeftAttack") && 
+            (currentState != PlayerState.attacking || currentState != PlayerState.staggered) && 
+            inventory.leftWeapon)
         {
             LeftAttackSequence();
         }
-        else if (Input.GetButtonDown("RightAttack") && currentState != PlayerState.attacking && inventory.rightWeapon)
+        else if (Input.GetButtonDown("RightAttack") &&
+            (currentState != PlayerState.attacking || currentState != PlayerState.staggered)&& 
+            inventory.rightWeapon)
         {
             RightAttackSequence();
         }

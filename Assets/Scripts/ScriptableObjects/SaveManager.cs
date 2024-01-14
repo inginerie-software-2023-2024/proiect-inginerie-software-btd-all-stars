@@ -14,10 +14,11 @@ public class SaveManager : ScriptableObject
         public Vector2 playerPosition;
         public Vector2 minCameraBound;
         public Vector2 maxCameraBound;
+        public float playerSpeed;
+        public int playerArmor;
         public int health;
         public int coins;
         public int potions;
-        public float speed;
         public int crowbarDamage;
         public float glockFiring;
         public List<Vector3> pickups;
@@ -44,12 +45,14 @@ public class SaveManager : ScriptableObject
         var player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
         state.playerPosition = player.transform.position;
 
-        state.health = player.GetComponent<HealthManager>().CurrentHealth;
+        var health = player.GetComponent<HealthManager>();
+        state.health = health.CurrentHealth;
+        state.playerArmor = health.Armor;
         state.coins = _inventory.coins;
         state.potions = _inventory.potions;
         state.glockFiring = _glock.attackSpeed;
         state.crowbarDamage = _crowbar.damage;
-        state.speed = player.GetComponent<PlayerController>().speed;
+        state.playerSpeed = player.GetComponent<PlayerController>().speed;
         
         var rooms = FindObjectsByType<EnemyHandler>(FindObjectsSortMode.None);
         state.clearedRooms.Clear();
@@ -107,12 +110,13 @@ public class SaveManager : ScriptableObject
         File.Delete(_file);
 
         state.playerPosition = new(-19, 1);
-        state.health = 10;
+        state.health = 6;
         state.coins = 0;
         state.potions = 3;
         state.crowbarDamage = 5;
         state.glockFiring = 0.8f;
-        state.speed = 5f;
+        state.playerSpeed = 5f;
+        state.playerArmor = 0;
         state.clearedRooms = new();
         state.pickups = new();
         state.minCameraBound = new Vector2(-20.33f, -2.97f);

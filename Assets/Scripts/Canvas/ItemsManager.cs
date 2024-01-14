@@ -12,7 +12,7 @@ public class ItemsManager : MonoBehaviour
         var list = inventory.upgrades;
         foreach(IUpgrade item in list)
         {
-            var instance = Instantiate(itemPrefab,gameObject.transform);
+            var instance = Instantiate(itemPrefab, gameObject.transform);
             instance.sprite = item.Sprite;
             instance.rectTransform.sizeDelta = new Vector2(35, 35);
         }
