@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
         transform.position = saveManager.state.playerPosition;
         healthManager.CurrentHealth = saveManager.state.health;
+        speed = saveManager.state.speed;
     }
 
     private void Update()

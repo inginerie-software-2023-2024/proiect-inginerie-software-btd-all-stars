@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: SaveManager
   m_EditorClassIdentifier: 
   state:
-    playerPosition: {x: -19, y: 1}
-    health: 6
+    playerPosition: {x: -19.40017, y: 2.215412}
+    health: 10
     coins: 0
     potions: 3
-    pickups: []
+    speed: 5
+    crowbarDamage: 5
+    glockFiring: 0.8
+    pickups:
+    - {x: -17.55, y: -5.67, z: -0.08203058}
     clearedRooms: []
+  _glock: {fileID: 11400000, guid: b50258f9e2f3a5f40a3d708d7b5c09d3, type: 2}
+  _crowbar: {fileID: 11400000, guid: 2cfc86abda4781740a6758c655e10b0c, type: 2}
   _file: save.json
   _inventory: {fileID: 11400000, guid: 874e9bf9a9d6bb240849f139de12e37e, type: 2}

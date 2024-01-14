@@ -17,6 +17,7 @@ public class SaveManager : ScriptableObject
         public int health;
         public int coins;
         public int potions;
+        public float speed;
         public int crowbarDamage;
         public float glockFiring;
         public List<Vector3> pickups;
@@ -48,6 +49,7 @@ public class SaveManager : ScriptableObject
         state.potions = _inventory.potions;
         state.glockFiring = _glock.attackSpeed;
         state.crowbarDamage = _crowbar.damage;
+        state.speed = player.GetComponent<PlayerController>().speed;
         
         var rooms = FindObjectsByType<EnemyHandler>(FindObjectsSortMode.None);
         state.clearedRooms.Clear();
@@ -110,6 +112,7 @@ public class SaveManager : ScriptableObject
         state.potions = 3;
         state.crowbarDamage = 5;
         state.glockFiring = 0.8f;
+        state.speed = 5f;
         state.clearedRooms = new();
         state.pickups = new();
         state.minCameraBound = new Vector2(-20.33f, -2.97f);
