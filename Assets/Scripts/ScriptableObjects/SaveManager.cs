@@ -120,6 +120,9 @@ public class SaveManager : ScriptableObject
 
         _inventory.coins = state.coins;
         _inventory.potions = state.potions;
+        _crowbar.damage = state.crowbarDamage;
+        _glock.attackSpeed = state.glockFiring;
+
         _inventory.upgrades.Clear();
     }
 }
