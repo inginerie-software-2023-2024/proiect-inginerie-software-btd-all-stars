@@ -56,7 +56,6 @@ public class EnemyHandler : MonoBehaviour
     public void UnregisterEnemy()
     {
         --enemies;
-        Debug.Log(enemies);
         if(enemies == 0)
         {
             RoomCleared = true;
