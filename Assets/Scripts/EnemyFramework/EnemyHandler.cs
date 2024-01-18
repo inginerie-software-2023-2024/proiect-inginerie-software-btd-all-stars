@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyHandler : MonoBehaviour
 {
-    private int enemies = 0;
+    public int enemies = 0;
     public bool RoomCleared { get; set; }
 
     public Pickup RoomReward;
@@ -56,6 +56,7 @@ public class EnemyHandler : MonoBehaviour
     public void UnregisterEnemy()
     {
         --enemies;
+        Debug.Log(enemies);
         if(enemies == 0)
         {
             RoomCleared = true;
