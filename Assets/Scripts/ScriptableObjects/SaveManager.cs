@@ -12,6 +12,8 @@ public class SaveManager : ScriptableObject
     public class GameState
     {
         public Vector2 playerPosition;
+        public Vector2 minCameraBound;
+        public Vector2 maxCameraBound;
         public int health;
         public int coins;
         public int potions;
@@ -46,6 +48,10 @@ public class SaveManager : ScriptableObject
                 state.clearedRooms.Add(room.gameObject.name);
             }
         }
+
+        var camera  = GameObject.FindGameObjectsWithTag("MainCamera").FirstOrDefault().GetComponent<CameraMovement>();
+        state.minCameraBound = camera.minPosition;
+        state.maxCameraBound = camera.maxPosition;
 
         WriteToSaveFile();
 
@@ -89,6 +95,8 @@ public class SaveManager : ScriptableObject
         state.potions = 3;
         state.clearedRooms = new();
         state.pickups = new();
+        state.minCameraBound = new Vector2(-20.33f, -2.97f);
+        state.maxCameraBound = new Vector2(-19.57f, -1.07f);
 
         _inventory.coins = state.coins;
         _inventory.potions = state.potions;

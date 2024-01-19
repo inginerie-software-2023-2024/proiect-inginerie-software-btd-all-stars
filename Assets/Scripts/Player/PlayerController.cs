@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     public AudioSource gunShotSound;
     public AudioSource crowbarAttackSound;
     public AudioSource healingSound;
-    private void Start()
+    
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();

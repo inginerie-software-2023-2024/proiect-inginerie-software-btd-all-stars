@@ -7,6 +7,19 @@ public class CameraMovement : MonoBehaviour
     public Vector2 maxPosition;
     public Vector2 minPosition;
     //Two Vector2 for the maximum area/ minimum area that the camera can go to.
+
+    [SerializeField]
+    private SaveManager _saveManager;
+
+
+    private void Awake()
+    {
+        maxPosition = _saveManager.state.maxCameraBound;
+        minPosition = _saveManager.state.minCameraBound;
+
+        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+    }
+
     void FixedUpdate()
     {
 	    if(transform.position != target.position)
