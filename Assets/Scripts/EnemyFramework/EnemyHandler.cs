@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyHandler : MonoBehaviour
 {
-    private int enemies = 0;
+    public int enemies = 0;
     public bool RoomCleared { get; set; }
 
     public Pickup RoomReward;

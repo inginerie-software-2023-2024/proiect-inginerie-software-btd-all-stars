@@ -12,10 +12,9 @@ public class SlimeController : GenericEnemyController
     private float _splitsLeft = 2;
 
     [SerializeField]
-    private LayerMask _tilemapCollision;
+    private float _splitShrink = 0.75f;
 
     private Vector3 _scale;
-    private float _size = 1;
 
     protected new void Start()
     {
@@ -65,18 +64,17 @@ public class SlimeController : GenericEnemyController
 
     private void Scale()
     {
-        transform.localScale *= _size * 3 / 2;
+        transform.localScale *= _splitShrink;
         _scale = transform.localScale;
 
         var health = gameObject.GetComponent<HealthManager>();
-        health.maxHealth = Mathf.RoundToInt(health.maxHealth * _size * 3 / 2);
+        health.maxHealth = Mathf.RoundToInt(health.maxHealth * _splitShrink);
         var damage = gameObject.GetComponent<Hurtbox>();
-        damage.attackDamage = Mathf.RoundToInt(damage.attackDamage * _size * 3 / 2);
+        damage.attackDamage = Mathf.FloorToInt(damage.attackDamage * _splitShrink);
     }
 
     public override void DeathSequence()
     {
-        _scale /= 2;
         base.DeathSequence();
 
         if (_splitsLeft == 0)
@@ -92,13 +90,12 @@ public class SlimeController : GenericEnemyController
         {
             var newSlime = Instantiate(this, transform.parent);
             
-            newSlime._size = _size / 2;
             newSlime._splitsLeft = _splitsLeft- 1;
             newSlime.Scale();
 
             Disperse(newSlime);
 
-            SendMessageUpwards("RegisterEnemy");
+            SendMessageUpwards("RegisterEnemy", null, SendMessageOptions.DontRequireReceiver);
         }
     }
 

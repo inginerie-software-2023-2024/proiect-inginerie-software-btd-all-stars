@@ -5,7 +5,6 @@ public class CarSpawner : MonoBehaviour
     public GameObject[] carPrefabs;
     public Vector3 direction;
     public float speed;
-
     private void Start()
     {
         InvokeRepeating("SpawnCar", 0f, Random.Range(2f,4f));
