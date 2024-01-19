@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3519635491001643270}
   - component: {fileID: 4004582596114819806}
   - component: {fileID: 5597227051658830391}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 6
   m_Sprite: {fileID: 1683033854, guid: ce8584c80cb03d54ca2fd7bae78d1c1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 8174231398676711582}
   - component: {fileID: 4000530902669160807}
   - component: {fileID: 2566001954485113459}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
