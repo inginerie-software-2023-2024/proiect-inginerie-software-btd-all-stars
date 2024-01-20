@@ -118,7 +118,6 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     {
         animator.speed = inventory.leftWeapon.attackSpeed;
         currentState = PlayerState.attacking;
-        crowbarAttackSound.Play();
         animator.SetBool(inventory.leftWeapon.type + "attacking", true);
     }
 
@@ -162,6 +161,11 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         StartCoroutine(Stagger(0.32f));
     }
 
+    private void PlayCrowbarSound()
+    {
+        crowbarAttackSound.Play();
+    }
+    
     protected IEnumerator Stagger(float seconds)
     {
         currentState = PlayerState.staggered;
