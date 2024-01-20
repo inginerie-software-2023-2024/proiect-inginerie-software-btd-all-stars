@@ -51,13 +51,13 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     {
         //Attacking controlls
         if (Input.GetButtonDown("LeftAttack") && 
-            (currentState != PlayerState.attacking || currentState != PlayerState.staggered) && 
+            (currentState != PlayerState.attacking && currentState != PlayerState.staggered) && 
             inventory.leftWeapon)
         {
             LeftAttackSequence();
         }
         else if (Input.GetButtonDown("RightAttack") &&
-            (currentState != PlayerState.attacking || currentState != PlayerState.staggered)&& 
+            (currentState != PlayerState.attacking && currentState != PlayerState.staggered)&& 
             inventory.rightWeapon)
         {
             RightAttackSequence();
