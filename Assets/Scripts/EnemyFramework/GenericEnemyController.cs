@@ -108,6 +108,8 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     public virtual void DeathSequence()
     {
         movementDirection = Vector3.zero;
+        enemyRigidbody.totalForce = Vector3.zero;
+        enemyRigidbody.velocity = Vector3.zero;
         var kill = GameObject.FindWithTag("Kill");
         var killSound = kill.GetComponent<AudioSource>();
         killSound.time = 0.2f;
