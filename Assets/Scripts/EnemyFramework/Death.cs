@@ -21,6 +21,7 @@ public class Death : StateMachineBehaviour
         GenerateLoot();
         animator.gameObject.SendMessageUpwards("UnregisterEnemy", null);
         animator.gameObject.SetActive(false);
+        Destroy(animator.gameObject);
     }
 
     //Add potions and coins to the inventory with a predetermined chance

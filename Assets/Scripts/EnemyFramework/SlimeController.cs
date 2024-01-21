@@ -24,7 +24,7 @@ public class SlimeController : GenericEnemyController
         var hitbox = GetComponent<Hitbox>();
         hitbox.MakeInvulnerable();
         currentState = EnemyState.staggered;
-        StartCoroutine(Helpers.SetTimer(0.32f, () =>
+        StartCoroutine(Helpers.SetTimer(0.5f, () =>
         {
             hitbox.MakeVulnerable();
             currentState = EnemyState.idle;
@@ -35,6 +35,9 @@ public class SlimeController : GenericEnemyController
     private void LateUpdate()
     {
         transform.localScale = _scale;
+        if(currentState == EnemyState.dying) {
+            transform.localScale = _scale / 2.5f;
+        }
     }
     protected override void AttackSequence()
     {
@@ -83,7 +86,6 @@ public class SlimeController : GenericEnemyController
         }
 
         var sprite = GetComponent<SpriteRenderer>();
-        sprite.flipX = false;
         sprite.color = Color.white;
 
         for(int i = 0; i < _slimesToSpawn; ++i)
@@ -101,7 +103,15 @@ public class SlimeController : GenericEnemyController
 
     private void Disperse(SlimeController newSlime)
     {
-        Vector3 force = new(Random.Range(-2,2), Random.Range(-2,2));
+        var hitDirection = (transform.position - target.position).normalized;
+        var knockbackDirection = new Vector2(hitDirection.x, hitDirection.z).normalized;
+        var perpendicular = Vector2.Perpendicular(knockbackDirection).normalized;
+
+        knockbackDirection *= Random.Range(3, 6);
+        perpendicular *= Random.Range(-6, 6);
+
+        var force = knockbackDirection + perpendicular;
+
         newSlime.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
     }
 }
