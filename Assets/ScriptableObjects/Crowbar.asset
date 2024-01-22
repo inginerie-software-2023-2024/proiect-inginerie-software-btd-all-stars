@@ -16,5 +16,5 @@ MonoBehaviour:
   weaponSprite: {fileID: 661732559, guid: 02e9e6bc74c2d1d4997c2dcbf36f19e0, type: 3}
   type: 1
   size: 0
-  damage: 5
+  damage: 8
   attackSpeed: 1

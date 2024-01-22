@@ -35,7 +35,8 @@ public class SlimeController : GenericEnemyController
     private void LateUpdate()
     {
         transform.localScale = _scale;
-        if(currentState == EnemyState.dying) {
+        if (currentState == EnemyState.dying)
+        {
             transform.localScale = _scale / 2.5f;
         }
     }
@@ -78,26 +79,29 @@ public class SlimeController : GenericEnemyController
 
     public override void DeathSequence()
     {
-        base.DeathSequence();
-
-        if (_splitsLeft == 0)
-        { 
-            return;
-        }
-
-        var sprite = GetComponent<SpriteRenderer>();
-        sprite.color = Color.white;
-
-        for(int i = 0; i < _slimesToSpawn; ++i)
+        if (currentState != EnemyState.dying)
         {
-            var newSlime = Instantiate(this, transform.parent);
-            
-            newSlime._splitsLeft = _splitsLeft- 1;
-            newSlime.Scale();
+            base.DeathSequence();
 
-            Disperse(newSlime);
+            if (_splitsLeft == 0)
+            {
+                return;
+            }
 
-            SendMessageUpwards("RegisterEnemy", null, SendMessageOptions.DontRequireReceiver);
+            var sprite = GetComponent<SpriteRenderer>();
+            sprite.color = Color.white;
+
+            for (int i = 0; i < _slimesToSpawn; ++i)
+            {
+                var newSlime = Instantiate(this, transform.parent);
+
+                newSlime._splitsLeft = _splitsLeft - 1;
+                newSlime.Scale();
+
+                Disperse(newSlime);
+
+                SendMessageUpwards("RegisterEnemy", null, SendMessageOptions.DontRequireReceiver);
+            }
         }
     }
 
