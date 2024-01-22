@@ -24,7 +24,6 @@ public class BoschetarController : GenericEnemyController
     {
         base.Start();
         attackingDirection = Vector2.Perpendicular(_movementDirection).normalized;
-        Debug.Log(attackingDirection);
         target = GameObject.FindWithTag("Player").transform;
     }
 
