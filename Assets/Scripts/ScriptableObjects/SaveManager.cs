@@ -14,13 +14,9 @@ public class SaveManager : ScriptableObject
         public Vector2 playerPosition;
         public Vector2 minCameraBound;
         public Vector2 maxCameraBound;
-        public float playerSpeed;
-        public int playerArmor;
         public int health;
         public int coins;
         public int potions;
-        public int crowbarDamage;
-        public float glockFiring;
         public List<Vector3> pickups;
         public List<string> clearedRooms;
     }
@@ -39,6 +35,21 @@ public class SaveManager : ScriptableObject
     [SerializeField]
     private Inventory _inventory;
 
+    private class DefaultValues
+    {
+        public Vector2 playerPosition = new(-19, 1);
+        public Vector2 minCameraBound = new(-20.33f, -2.97f);
+        public Vector2 maxCameraBound = new(-19.57f, -1.07f);
+        public int health = 6;
+        public int coins = 0;
+        public int potions = 3;
+        public int crowbarDamage = 5;
+        public float glockSpeed = 0.8f;
+    };
+
+    [SerializeField]
+    private DefaultValues _defaults = new();
+
     public bool SaveExists { get => File.Exists(_file); }
     public void Save()
     {
@@ -47,12 +58,8 @@ public class SaveManager : ScriptableObject
 
         var health = player.GetComponent<HealthManager>();
         state.health = health.CurrentHealth;
-        state.playerArmor = health.Armor;
         state.coins = _inventory.coins;
         state.potions = _inventory.potions;
-        state.glockFiring = _glock.attackSpeed;
-        state.crowbarDamage = _crowbar.damage;
-        state.playerSpeed = player.GetComponent<PlayerController>().speed;
         
         var rooms = FindObjectsByType<EnemyHandler>(FindObjectsSortMode.None);
         state.clearedRooms.Clear();
@@ -94,8 +101,8 @@ public class SaveManager : ScriptableObject
         state = JsonUtility.FromJson<GameState>(File.ReadAllText(_file));
         _inventory.coins = state.coins;
         _inventory.potions = state.potions;
-        _crowbar.damage = state.crowbarDamage;
-        _glock.attackSpeed = state.glockFiring;
+        _crowbar.damage = _defaults.crowbarDamage;
+        _glock.attackSpeed = _defaults.glockSpeed;
 
         _inventory.upgrades.Clear();
     }
@@ -109,23 +116,19 @@ public class SaveManager : ScriptableObject
     {
         File.Delete(_file);
 
-        state.playerPosition = new(-19, 1);
-        state.health = 6;
-        state.coins = 0;
-        state.potions = 3;
-        state.crowbarDamage = 5;
-        state.glockFiring = 0.8f;
-        state.playerSpeed = 5f;
-        state.playerArmor = 0;
+        state.playerPosition = _defaults.playerPosition;
+        state.health = _defaults.health;
+        state.coins = _defaults.coins;
+        state.potions = _defaults.potions;
         state.clearedRooms = new();
         state.pickups = new();
-        state.minCameraBound = new Vector2(-20.33f, -2.97f);
-        state.maxCameraBound = new Vector2(-19.57f, -1.07f);
+        state.minCameraBound = _defaults.minCameraBound;
+        state.maxCameraBound = _defaults.maxCameraBound;
 
         _inventory.coins = state.coins;
         _inventory.potions = state.potions;
-        _crowbar.damage = state.crowbarDamage;
-        _glock.attackSpeed = state.glockFiring;
+        _crowbar.damage = _defaults.crowbarDamage;
+        _glock.attackSpeed = _defaults.glockSpeed;
 
         _inventory.upgrades.Clear();
     }

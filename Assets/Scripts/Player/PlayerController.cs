@@ -13,7 +13,7 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour, IOnHitSubscriber
 {
-    public float speed;
+    public float speed = 5;
 
     private Animator animator;
     public PlayerState currentState;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     public AudioSource crowbarAttackSound;
     public AudioSource healingSound;
     
-    private void Awake()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
 
         transform.position = saveManager.state.playerPosition;
         healthManager.CurrentHealth = saveManager.state.health;
-        healthManager.Armor = saveManager.state.playerArmor;
-        speed = saveManager.state.playerSpeed;
     }
 
     private void Update()
