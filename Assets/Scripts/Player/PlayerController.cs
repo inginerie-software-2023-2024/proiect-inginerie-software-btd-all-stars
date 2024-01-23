@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
     public AudioSource gunShotSound;
     public AudioSource crowbarAttackSound;
     public AudioSource healingSound;
-    
-    private void Start()
+
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour, IOnHitSubscriber
         animator.SetFloat("moveY", -1);
 
         transform.position = saveManager.state.playerPosition;
+    }
+
+    private void Start()
+    {
         healthManager.CurrentHealth = saveManager.state.health;
     }
 
