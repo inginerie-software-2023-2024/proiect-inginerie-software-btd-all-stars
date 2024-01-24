@@ -37,9 +37,9 @@ public class EnemyHandler : MonoBehaviour
         BroadcastMessage("WakeUp",null,SendMessageOptions.DontRequireReceiver);
         if(!RoomCleared)
         {
-            //if room has not been cleared, enable the walls
+            //if room has not been cleared, enable the walls and disable the transitions
             BroadcastMessage("EnableWall", null, SendMessageOptions.DontRequireReceiver);
-
+            BroadcastMessage("DisableTransition", null, SendMessageOptions.DontRequireReceiver);
         }
 
         if (_minimapTiles != null) {
@@ -52,7 +52,7 @@ public class EnemyHandler : MonoBehaviour
     {
         ++enemies;
     }
-    //If there are no more enemies, room is cleared and walls are disabled
+    //If there are no more enemies, room is cleared, walls are disabled and transitions enabled
     public void UnregisterEnemy()
     {
         --enemies;
@@ -60,6 +60,7 @@ public class EnemyHandler : MonoBehaviour
         {
             RoomCleared = true;
             BroadcastMessage("DisableWall",null,SendMessageOptions.DontRequireReceiver);
+            BroadcastMessage("EnableTransition", null, SendMessageOptions.DontRequireReceiver);
             _endSound.Play();
             if (RoomReward != null)
             {

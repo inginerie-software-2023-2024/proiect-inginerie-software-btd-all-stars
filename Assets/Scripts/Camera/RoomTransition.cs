@@ -23,4 +23,12 @@ public class RoomTransition : MonoBehaviour
         }
 
     }
+    public void EnableTransition()
+    {
+        GetComponent<BoxCollider2D>().enabled = true;
+    }
+    public void DisableTransition()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+    }
 }
