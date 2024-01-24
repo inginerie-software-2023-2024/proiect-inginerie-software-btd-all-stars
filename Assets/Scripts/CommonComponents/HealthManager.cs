@@ -5,7 +5,11 @@ using UnityEngine.Events;
 public class HealthManager : MonoBehaviour, IOnHitSubscriber
 {
     public int maxHealth = 10;
+
+    [field: SerializeField]
     public int CurrentHealth { get; set; }
+
+    [field: SerializeField]
     public int Armor { get; set; } = 0;
 
     public UnityEvent deathSequence;
