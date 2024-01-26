@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3161764806791101998}
   - component: {fileID: 4737855495753254539}
   - component: {fileID: -4866000611443036239}
-  m_Layer: 10
+  m_Layer: 15
   m_Name: BigGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}

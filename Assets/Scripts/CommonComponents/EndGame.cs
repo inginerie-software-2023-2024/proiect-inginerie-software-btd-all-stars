@@ -3,16 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
-    public HealthManager player;
-    public void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-     	HealthManager player = GameObject.FindWithTag("Player").GetComponent<HealthManager>();   
-    }
-    public void FixedUpdate()
-    {
-		if(player.maxHealth > 12)
-	{
-	    	SceneManager.LoadScene("CreditScene");
-	}
+        if(collision.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene("CreditScene");
+        }
     }
 }

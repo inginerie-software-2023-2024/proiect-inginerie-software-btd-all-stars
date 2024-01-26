@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4534783757601580053}
   - component: {fileID: 6293573658381824958}
   - component: {fileID: -4123044169455097264}
-  m_Layer: 10
+  m_Layer: 15
   m_Name: PurpleFlower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
