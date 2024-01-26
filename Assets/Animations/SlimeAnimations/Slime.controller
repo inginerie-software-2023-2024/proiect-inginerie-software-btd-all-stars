@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ffd01925023d1649b6677337403e378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reward: 1
   playerInventory: {fileID: 11400000, guid: 874e9bf9a9d6bb240849f139de12e37e, type: 2}
 --- !u!91 &9100000
 AnimatorController:

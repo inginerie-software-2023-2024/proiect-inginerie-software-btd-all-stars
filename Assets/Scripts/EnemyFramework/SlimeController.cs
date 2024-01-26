@@ -98,6 +98,8 @@ public class SlimeController : GenericEnemyController
                 newSlime._splitsLeft = _splitsLeft - 1;
                 newSlime.Scale();
 
+                newSlime.GetComponent<Animator>().GetBehaviour<Death>().reward = false;
+              
                 Disperse(newSlime);
 
                 SendMessageUpwards("RegisterEnemy", null, SendMessageOptions.DontRequireReceiver);

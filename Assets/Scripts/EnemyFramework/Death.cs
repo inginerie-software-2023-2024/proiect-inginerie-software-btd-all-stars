@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Death : StateMachineBehaviour
 {
+    public bool reward = true; 
+
     public Inventory playerInventory;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -18,7 +20,10 @@ public class Death : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GenerateLoot();
+        if (reward)
+        {
+            GenerateLoot();
+        }
         animator.gameObject.SendMessageUpwards("UnregisterEnemy", null);
         animator.gameObject.SetActive(false);
         Destroy(animator.gameObject);
