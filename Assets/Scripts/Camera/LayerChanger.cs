@@ -4,7 +4,8 @@ public class LayerChanger : MonoBehaviour
 {
     [SerializeField]
     private LayerMask _includedLayers;
-
+    [SerializeField]
+    private float offset = 0f;
     private float lowerBound;
 
     private void Start()
@@ -20,7 +21,15 @@ public class LayerChanger : MonoBehaviour
         {
             int targetSortingLayer;
             float targetLowerBound = target.bounds.min.y;
-
+            SpriteRenderer localSpriteRenderer;
+            if(GetComponent<SpriteRenderer>()) 
+            {
+                localSpriteRenderer = GetComponent<SpriteRenderer>();
+            }
+            else
+            {
+                localSpriteRenderer = GetComponentInParent<SpriteRenderer>();
+            }
             if (target.GetComponent<SpriteRenderer>())
             {
                 targetSortingLayer = target.GetComponent<SpriteRenderer>().sortingOrder;
@@ -30,13 +39,13 @@ public class LayerChanger : MonoBehaviour
                 targetSortingLayer = target.GetComponentInParent<SpriteRenderer>().sortingOrder;
             }
 
-            if (targetLowerBound >= lowerBound)
+            if (targetLowerBound >= lowerBound +  offset)
             {
-                GetComponent<SpriteRenderer>().sortingOrder = targetSortingLayer + 1;
+                localSpriteRenderer.sortingOrder = targetSortingLayer + 1;
             }
             else
             {
-                GetComponent<SpriteRenderer>().sortingOrder = targetSortingLayer - 1;
+                localSpriteRenderer.sortingOrder = targetSortingLayer - 1;
             }
         }
     }
