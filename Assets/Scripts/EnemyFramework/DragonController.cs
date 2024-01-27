@@ -178,6 +178,7 @@ public class DragonController : GenericEnemyController
     //Overriding the GenericEnemy OnHit handler which staggers on hit
     public override void OnHit(OnHitPayload payload)
     {
+        audioSource.Play();
         return;
     }
 

@@ -108,7 +108,7 @@ MonoBehaviour:
   enemyName: Boschetar
   currentState: 0
   _staggerTime: 0.32
-  _audioSource: {fileID: -1391231188013633821}
+  audioSource: {fileID: -1391231188013633821}
   _projectilePrefab: {fileID: 4000530902669160807, guid: 59a499009471b504db0c7aeae78249c7, type: 3}
   _movementDirection: {x: 0, y: 0}
   _cooldownDuration: 2
@@ -199,6 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  <CurrentHealth>k__BackingField: 0
+  <Armor>k__BackingField: 0
   deathSequence:
     m_PersistentCalls:
       m_Calls:

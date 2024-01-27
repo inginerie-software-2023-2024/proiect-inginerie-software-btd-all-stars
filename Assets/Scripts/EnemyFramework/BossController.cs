@@ -110,6 +110,7 @@ public class BossController : GenericEnemyController
     //Overriding the GenericEnemy OnHit handler which staggers on hit
     public override void OnHit(OnHitPayload payload)
     {
+        audioSource.Play();
         return;
     }
 }

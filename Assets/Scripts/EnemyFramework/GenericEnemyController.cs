@@ -31,12 +31,12 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
     protected float _staggerTime = 0.32f;
     
     [SerializeField]
-    private AudioSource _audioSource;
+    protected AudioSource audioSource;
     //Initialization
     protected void Start()
     {
         currentState = EnemyState.idle;
-        _audioSource.time = 0.1f;
+        audioSource.time = 0.1f;
         enemyRigidbody = GetComponent<Rigidbody2D>();
         enemyAnimator = GetComponent<Animator>();
     }
@@ -134,7 +134,7 @@ public abstract class GenericEnemyController : MonoBehaviour, IOnHitSubscriber
         }
         
         stagger = StartCoroutine(Stagger(_staggerTime));
-        _audioSource.Play();
+        audioSource.Play();
     }
 
     protected IEnumerator Stagger(float seconds)

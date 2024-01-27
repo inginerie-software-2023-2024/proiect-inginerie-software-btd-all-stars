@@ -308,7 +308,7 @@ MonoBehaviour:
   enemyName: Rat
   currentState: 0
   _staggerTime: 0.32
-  _audioSource: {fileID: -5355250576245619015}
+  audioSource: {fileID: -5355250576245619015}
 --- !u!114 &6053442341020535070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  <CurrentHealth>k__BackingField: 0
+  <Armor>k__BackingField: 0
   deathSequence:
     m_PersistentCalls:
       m_Calls:

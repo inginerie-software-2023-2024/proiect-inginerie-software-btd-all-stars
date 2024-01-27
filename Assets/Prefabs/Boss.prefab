@@ -111,7 +111,7 @@ MonoBehaviour:
   enemyName: Dumi
   currentState: 0
   _staggerTime: 0.32
-  _audioSource: {fileID: -1481594530451179060}
+  audioSource: {fileID: -1481594530451179060}
   projectilePrefab: {fileID: 4000530902669160807, guid: 59a499009471b504db0c7aeae78249c7, type: 3}
   launchOffSet: {fileID: 8440286890135601799}
   bulletCount: 50
@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 75
+  <CurrentHealth>k__BackingField: 0
+  <Armor>k__BackingField: 0
   deathSequence:
     m_PersistentCalls:
       m_Calls:
@@ -278,7 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089c155f3d590664a9e6473384f3580c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _treashold: 0.5
+  _includedLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  offset: 0
 --- !u!82 &-1481594530451179060
 AudioSource:
   m_ObjectHideFlags: 0

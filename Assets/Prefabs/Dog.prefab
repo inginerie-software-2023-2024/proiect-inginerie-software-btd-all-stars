@@ -667,7 +667,7 @@ MonoBehaviour:
   enemyName: Dog
   currentState: 0
   _staggerTime: 0.32
-  _audioSource: {fileID: 7188203951498528741}
+  audioSource: {fileID: 7188203951498528741}
   jumpSpeed: 12
   jumpRadius: 3
   alertRadius: 10

@@ -234,6 +234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  <CurrentHealth>k__BackingField: 0
+  <Armor>k__BackingField: 0
   deathSequence:
     m_PersistentCalls:
       m_Calls:
@@ -265,13 +267,11 @@ MonoBehaviour:
   enemyName: Slime
   currentState: 0
   _staggerTime: 1.5
-  _audioSource: {fileID: 3766989283906668751}
+  audioSource: {fileID: 3766989283906668751}
   _alertRadius: 20
   _slimesToSpawn: 2
   _splitsLeft: 0
-  _tilemapCollision:
-    serializedVersion: 2
-    m_Bits: 128
+  _splitShrink: 0.75
 --- !u!95 &3126204219803755310
 Animator:
   serializedVersion: 5

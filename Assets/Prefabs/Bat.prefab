@@ -259,7 +259,7 @@ MonoBehaviour:
   enemyName: Bat
   currentState: 0
   _staggerTime: 0.32
-  _audioSource: {fileID: 5231619199310211148}
+  audioSource: {fileID: 5231619199310211148}
   _maxSpeed: 10
 --- !u!114 &-2325205031444806574
 MonoBehaviour:

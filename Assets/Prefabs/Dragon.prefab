@@ -303,6 +303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+  <CurrentHealth>k__BackingField: 0
+  <Armor>k__BackingField: 0
   deathSequence:
     m_PersistentCalls:
       m_Calls:
@@ -489,7 +491,7 @@ MonoBehaviour:
   enemyName: Dragon
   currentState: 0
   _staggerTime: 0
-  _audioSource: {fileID: 3468109006888656471}
+  audioSource: {fileID: 3468109006888656471}
   _projectilePrefab: {fileID: 4000530902669160807, guid: 58c884d2358cfe2498dde6c92096aa58, type: 3}
   _launchOffSet: {fileID: 4012452800691022164}
   _fireCooldownDuration: 5
@@ -712,6 +714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+  <CurrentHealth>k__BackingField: 0
+  <Armor>k__BackingField: 0
   deathSequence:
     m_PersistentCalls:
       m_Calls:
@@ -902,6 +906,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  <CurrentHealth>k__BackingField: 0
+  <Armor>k__BackingField: 0
   deathSequence:
     m_PersistentCalls:
       m_Calls:
